@@ -6,7 +6,7 @@ public class Main {
         int num = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
 
-        while(num > 0){
+        while(true){
             if(num < 2){
                 sb.append(num);
                 break;
