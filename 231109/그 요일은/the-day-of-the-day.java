@@ -14,16 +14,14 @@ public class Main {
         // 차이나는 요일 구하기
         int calculateDay = (numOfDays(m2Month, m2Day) - numOfDays(m1Month, m1Day));
 
-        System.out.println(calculateRepeatDay(calculateDay, day));
+        System.out.println(calculateRepeatDayCount(calculateDay, day));
 
     }
 
-    private static int calculateRepeatDay(int d, String day){
+    private static int calculateRepeatDayCount(int d, String day){
         int dayCnt = 0;
-        // 날짜가 앞서면 7일을 더한다
-        d = d > 0 ? d : d+7;
         String[] days = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-        for(int i = 1; i<=d; i++){
+        for(int i = 0; i<=d; i++){
             if(days[i%7].equals(day)) dayCnt++;
         }
         return dayCnt;
