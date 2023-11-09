@@ -9,7 +9,8 @@ public class Main {
         int hour = Integer.parseInt(s[1]);
         int min = Integer.parseInt(s[2]);
 
-        System.out.println(calculateDate(day,hour, min) - calculateDate(11,11,11));
+        int result = calculateDate(day,hour, min) - calculateDate(11,11,11);
+        System.out.println(result < 0 ? -1 : result);
     }
 
     public static int calculateDate(int d, int h, int m){
