@@ -2,6 +2,7 @@ import java.io.*;
 
 public class Main {
     static int MAX_LINE = 200;
+    static int OFFSET = 100;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -10,9 +11,9 @@ public class Main {
         for(int i = 0; i<n; i++){
             String str = br.readLine();
             String[] s = str.split(" ");
-            int x1 = Integer.parseInt(s[0]);
-            int x2 = Integer.parseInt(s[1]);
-            for(int j = x1+100; j<x2+100; j++){
+            int x1 = Integer.parseInt(s[0]) + OFFSET;
+            int x2 = Integer.parseInt(s[1]) + OFFSET;
+            for(int j = x1; j<x2; j++){
                 lineArr[j]++;
             }
         }
