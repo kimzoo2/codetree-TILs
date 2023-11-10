@@ -18,7 +18,7 @@ public class Main {
             secondOrder = Integer.parseInt(orderList[1])-1;
 
             for(int j = firstOrder; j<=secondOrder; j++){
-                arr[j] = ++arr[j];
+                arr[j]++;
             }
         }
 
