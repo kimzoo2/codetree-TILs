@@ -18,7 +18,7 @@ public class Main {
         int len = targetNumber.length();
 
         for (int i = 0; i < len; i++) {
-            result = i * originNumber + (targetNumber.charAt(i) -'0');
+            result = result * originNumber + (targetNumber.charAt(i) -'0');
         }
         return result;
     }
