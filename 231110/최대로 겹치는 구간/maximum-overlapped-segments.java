@@ -12,7 +12,7 @@ public class Main {
             String[] s = str.split(" ");
             int x1 = Integer.parseInt(s[0]);
             int x2 = Integer.parseInt(s[1]);
-            for(int j = x1+100; j<x2+100-1; j++){
+            for(int j = x1+100; j<x2+100; j++){
                 lineArr[j]++;
             }
         }
