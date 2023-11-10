@@ -1,4 +1,21 @@
 import java.io.*;
+class Order{
+    private int distance;
+    private String direction;
+
+    public Order(int distance, String direction) {
+        this.distance = distance;
+        this.direction = direction;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+}
 public class Main {
     static int MAX_OFFSET = 1000;
     static int MAX_N = MAX_OFFSET + 100;
@@ -7,17 +24,26 @@ public class Main {
         // 질의 개수를 받는다.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
+        Order[] orders = new Order[n];
 
         // 이전 구간 위치를 기억할 변수를 선언한다.
-        int idx = MAX_OFFSET;
+        int orgIdx = MAX_OFFSET;
 
         // 명령만큼 반복한다.
         for(int i = 0; i<n; i++) {
             String str = br.readLine();
             String[] s = str.split(" ");
-            int x1 = Integer.parseInt(s[0]);
-            String x2 = s[1];
-            idx = fillSection(x1, x2, idx);
+            orders[i] = new Order(Integer.parseInt(s[0]), s[1]);
+        }
+
+        orgIdx = fillSection(orders[0], orgIdx);
+
+        for(int i = 1; i<n; i++){
+            if(!orders[i].getDirection().equals(orders[i-1].getDirection())){
+                orgIdx += orders[i].getDirection().equals("R") ? 1 : -1;
+            }
+            orgIdx = fillSection(orders[i], orgIdx);
+
         }
 
         // 2번 이상 지나간 구간을 카운트할 변수를 선언한다.
@@ -31,19 +57,19 @@ public class Main {
         System.out.println(cnt);
     }
 
-    private static int fillSection(int x1, String x2, int originIdx){
-        int temp = originIdx;
-        int breakNum = x2.equals("R") ? originIdx+x1 : originIdx-x1;
-        while(true) {
-            arr[temp]++;
-            if (x2.charAt(0) == 'R') {
-                temp++; // 오른쪽으로 x1만큼 이동한다.
-            } else {
-                temp--; // 왼쪽으로 x1만큼 이동한다.
+    private static int fillSection(Order order, int orgIdx){
+        int x1 = order.getDistance();
+        if(order.getDirection().equals("R")){
+            for(int j = orgIdx; j<orgIdx+x1; j++){
+                arr[j]++;
             }
-            if (temp == breakNum) {
-                return temp; // 이전 구간 위치를 저장한다.
+            orgIdx += x1;
+        }else{
+            for(int j = orgIdx; j>orgIdx-x1; j--){
+                arr[j]++;
             }
+            orgIdx -= x1;
         }
+        return orgIdx;
     }
 }
