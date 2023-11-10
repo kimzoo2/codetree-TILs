@@ -18,7 +18,7 @@ class Order{
 }
 public class Main {
     static int MAX_OFFSET = 1000;
-    static int MAX_N = MAX_OFFSET + 100;
+    static int MAX_N = MAX_OFFSET * 2;
     static int[] arr = new int[MAX_N];
     public static void main(String[] args) throws IOException {
         // 질의 개수를 받는다.
