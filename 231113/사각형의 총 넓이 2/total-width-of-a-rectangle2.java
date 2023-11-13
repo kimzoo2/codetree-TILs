@@ -1,5 +1,8 @@
 import java.io.*;
 public class Main {
+    static int OFF_SET = 100;
+    static int MAX_N = OFF_SET * 2 + 1;
+    static int[][] grid = new int[MAX_N][MAX_N];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int cnt = Integer.parseInt(br.readLine());
@@ -25,4 +28,5 @@ public class Main {
         }
 
         System.out.println(result);
+    }
 }
