@@ -1,6 +1,6 @@
 import java.io.*;
 public class Main {
-    static int OFFSET = 10;
+    static int OFFSET = 100;
     static int MAXLEN = OFFSET * 2;
     static int[][] grid4 = new int[MAXLEN+1][MAXLEN+1];
     public static void main(String[] args) throws IOException {
