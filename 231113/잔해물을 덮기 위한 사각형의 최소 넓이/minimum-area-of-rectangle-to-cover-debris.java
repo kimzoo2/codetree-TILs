@@ -13,8 +13,8 @@ public class Main {
             x2 = Integer.parseInt(split[2]) + OFFSET;
             y2 = Integer.parseInt(split[3]) + OFFSET;
 
-            for (int j = x1; j < x2; j++) {
-                for (int k = y1; k < y2; k++) {
+            for (int j = x1; j <= x2; j++) {
+                for (int k = y1; k <= y2; k++) {
                     if(i == 0) grid4[j][k]++;
                     else grid4[j][k]--;
                 }
@@ -28,17 +28,17 @@ public class Main {
         int y2 = 0;
         for (int i = 0; i < MAXLEN; i++) {
             for (int j = 0; j < MAXLEN; j++) {
-                if(grid4[x1][y1] < grid4[i][j]){
+                if(grid4[i][j] > 0 && grid4[x1][y1] < grid4[i][j]){
                     x1 = i;
                     y1 = j;
                 }
 
-                if(grid4[x2][y2] <= grid4[i][j]){
+                if(grid4[i][j] > 0 && grid4[x2][y2] <= grid4[i][j]){
                     x2 = i;
                     y2 = j;
                 }
             }
         }
-        System.out.println((x2+1 - x1) * (y2+1 - y1));
+        System.out.println((x2 - x1) * (y2 - y1));
     }
 }
