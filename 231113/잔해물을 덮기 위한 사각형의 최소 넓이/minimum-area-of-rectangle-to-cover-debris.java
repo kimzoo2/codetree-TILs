@@ -13,8 +13,8 @@ public class Main {
             x2 = Integer.parseInt(split[2]) + OFFSET;
             y2 = Integer.parseInt(split[3]) + OFFSET;
 
-            for (int j = x1; j <= x2; j++) {
-                for (int k = y1; k <= y2; k++) {
+            for (int j = x1; j < x2; j++) {
+                for (int k = y1; k < y2; k++) {
                     if(i == 0) grid4[j][k]++;
                     else grid4[j][k]--;
                 }
@@ -22,23 +22,23 @@ public class Main {
         }
 
         // 현재 grid 기준으로 x1, x2, y1, y2 구하기
-        int x1 = 0;
-        int y1 = 0;
+        int x1 = MAXLEN;
+        int y1 = MAXLEN;
         int x2 = 0;
         int y2 = 0;
-        for (int i = 0; i < MAXLEN; i++) {
-            for (int j = 0; j < MAXLEN; j++) {
-                if(grid4[i][j] > 0 && grid4[x1][y1] < grid4[i][j]){
-                    x1 = i;
-                    y1 = j;
-                }
-
-                if(grid4[i][j] > 0 && grid4[x2][y2] <= grid4[i][j]){
-                    x2 = i;
-                    y2 = j;
+        boolean firstRectExist = false;
+        for (int i = 0; i <= MAXLEN; i++) {
+            for (int j = 0; j <= MAXLEN; j++) {
+                if(grid4[i][j] == 1){
+                    firstRectExist = true;
+                    x1 = Math.min(x1, i);
+                    y1 = Math.min(y1, j);
+                    x2 = Math.max(x2, i);
+                    y2 = Math.max(y2, j);
                 }
             }
         }
-        System.out.println((x2 - x1) * (y2 - y1));
+        if(firstRectExist == false) System.out.println(0);
+        else System.out.println((x2- x1 + 1) * (y2- y1 + 1));
     }
 }
