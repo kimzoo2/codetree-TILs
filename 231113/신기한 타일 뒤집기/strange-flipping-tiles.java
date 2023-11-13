@@ -1,6 +1,6 @@
 import java.io.*;
 public class Main {
-    static int OFFSET_TEMP = 20;
+    static int OFFSET_TEMP = 100_000;
     static int MAX_N_TEMP = OFFSET_TEMP * 2 + 1;
     static char[] sectionArr = new char[MAX_N_TEMP];
     public static void main(String[] args) throws IOException {
