@@ -12,9 +12,9 @@ public class Main {
         int n = 1, ans = 1;
         for (int i = 1; i < cnt; i++) {
             if (arr[i - 1] * arr[i] > 0) {
-                n = 1;
-            } else {
                 n++;
+            } else {
+                n=1;
             }
             ans = Math.max(ans, n);
         }
