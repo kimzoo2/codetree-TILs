@@ -61,19 +61,17 @@ public class Main {
 
 
         // 만남 여부 확인 변수
-        boolean meetingStatus = false;
-        int result = 0;
+        int ans = -1;
 
         // A와 B의 만남 여부를 확인한다.
         for (int i = 1; i < totalSecond; i++) {
             if (aDistanceArr[i] == bDistanceArr[i]) {
-                meetingStatus = true;
-                result = i;
+                ans = i;
                 break;
             }
         }
 
         // 만약 만나지 않으면 -1을 출력한다.
-        System.out.println(meetingStatus ? result : -1);
+        System.out.println(ans);
     }
 }
