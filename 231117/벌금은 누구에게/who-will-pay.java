@@ -18,6 +18,7 @@ public class Main {
             students[num]++;
             if(students[num] == k){
                 idx = num;
+                break;
             }
         }
 
