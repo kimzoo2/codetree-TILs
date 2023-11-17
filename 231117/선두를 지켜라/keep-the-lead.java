@@ -44,7 +44,7 @@ public class Main {
         }
 
         int cnt = 0;
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < curIdx; i++) {
             if(totalArr[i-1] != totalArr[i]) cnt++;
         }
 
