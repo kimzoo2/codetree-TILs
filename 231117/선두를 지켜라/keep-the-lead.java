@@ -32,10 +32,10 @@ public class Main {
             String[] s = br.readLine().split(" ");
             int v = Integer.parseInt(s[0]);
             int t = Integer.parseInt(s[1]);
-            for (int j = 1; j < t; j++) {
+            for (int j = 1; j <= t; j++) {
                 bArr[curIdx++] = (j * v) + totalDistance;
             }
-            totalDistance += bArr[curIdx-1];
+            totalDistance = bArr[curIdx-1];
         }
 
         for (int i = 0; i < curIdx; i++) {
@@ -43,9 +43,13 @@ public class Main {
             else if(bArr[i] < aArr[i]) totalArr[i] = 2;
         }
 
-        int cnt = 0;
+        int cnt = -1;
+        int lastIdx = 0;
         for (int i = 1; i < curIdx; i++) {
-            if(totalArr[i-1] != totalArr[i]) cnt++;
+            if(totalArr[i] > 0 && lastIdx != totalArr[i]){
+                lastIdx =totalArr[i];
+                cnt++;
+            }
         }
 
         System.out.println(cnt);
