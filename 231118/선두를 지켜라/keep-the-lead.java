@@ -43,7 +43,7 @@ public class Main {
             else if(bArr[i] < aArr[i]) totalArr[i] = 2;
         }
 
-        int cnt = -1;
+        int cnt = 0;
         int lastIdx = 0;
         for (int i = 0; i < curIdx; i++) {
             if(totalArr[i] > 0 && lastIdx != totalArr[i]){
@@ -52,7 +52,7 @@ public class Main {
             }
         }
 
-        System.out.println(cnt);
+        System.out.println(cnt == 0 ? cnt : cnt-1);
 
     }
 }
