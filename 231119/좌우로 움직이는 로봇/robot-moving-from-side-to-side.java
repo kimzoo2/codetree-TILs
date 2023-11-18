@@ -38,15 +38,21 @@ public class Main {
             }
         }
 
-        int cnt = 0;
         int totalIdx = Math.max(aTotalTime, bTotalTime);
-        for (int i = 1; i <= totalIdx; i++) {
-            if(aRobot[i] == bRobot[i] && aRobot[i - 1] != bRobot[i - 1])
-                // 직전 위치가 다른 위치에 있을 때만 카운트한다.
-                cnt++;
-            
+        for (int i = aTotalTime; i < totalIdx; i++) {
+            aRobot[i] = aRobot[i-1];
         }
 
+        for(int i = bTotalTime; i < totalIdx; i++){
+            bRobot[i] = bRobot[i-1];
+        }
+
+        int cnt = 0;
+        for (int i = 1; i < totalIdx; i++) {
+            if(aRobot[i] == bRobot[i] && aRobot[i - 1] != bRobot[i - 1]){
+                cnt++;
+            }
+        }
         System.out.println(cnt);
     }
 }
