@@ -10,63 +10,48 @@ public class Main {
         int n = Integer.parseInt(split[0]);
         int m = Integer.parseInt(split[1]);
 
-        int aTotalTime = 0;
-        int aTotalDistance = 0;
+        int aTotalTime = 1;
         for (int i = 0; i < n; i++) {
             String[] input = br.readLine().split(" ");
             int time = Integer.parseInt(input[0]);
             char direction = input[1].charAt(0);
-            if(direction == 'R'){
-                int x1 = aTotalDistance;
-                int x2 = aTotalDistance + time;
-                for (int j = x1; j < x2; j++) {
-                    aRobot[aTotalTime++] = j;
-                }
-                aTotalDistance += time;
-            }else{
-                int x1 = aTotalDistance;
-                int x2 = aTotalDistance - time;
-                for (int j = x1; j > x2; j--) {
-                    aRobot[aTotalTime++] = j;
-                }
-                aTotalDistance -= time;
+            while(time-- > 0){
+                if(direction == 'R')
+                    aRobot[aTotalTime] = aRobot[aTotalTime-1] + 1;
+                else
+                    aRobot[aTotalTime] = aRobot[aTotalTime-1] - 1;
+                aTotalTime++;
             }
         }
 
-        int bTotalTime = 0;
-        int bTotalDistance = 0;
+        int bTotalTime = 1;
         for (int i = 0; i < m; i++) {
             String[] input = br.readLine().split(" ");
             int time = Integer.parseInt(input[0]);
             char direction = input[1].charAt(0);
-            if(direction == 'R'){
-                int x1 = bTotalDistance;
-                int x2 = bTotalDistance + time;
-                for (int j = x1; j < x2; j++) {
-                    bRobot[bTotalTime++] = j;
-                }
-                bTotalDistance += time;
-            }else{
-                int x1 = bTotalDistance;
-                int x2 = bTotalDistance - time;
-                for (int j = x1; j > x2; j--) {
-                    bRobot[bTotalTime++] = j;
-                }
-                bTotalDistance -= time;
+            while(time-- > 0){
+                if(direction == 'R')
+                    bRobot[bTotalTime] = bRobot[bTotalTime-1] + 1;
+                else
+                    bRobot[bTotalTime] = bRobot[bTotalTime-1] - 1;
+                bTotalTime++;
             }
         }
 
         int cnt = 0;
         int[][] lastIdx = new int[1][2];
-        for (int i = 1; i <= bTotalTime; i++) {
-            if(aRobot[i] == bRobot[i]){
-                // 직전 위치에 다른 위치에 있을 때만 카운트한다.
+        int totalIdx = Math.max(aTotalTime, bTotalTime);
+        for (int i = 0; i < totalIdx; i++) {
+            int a = i < aTotalTime ? aRobot[i] : aRobot[aTotalTime-1];
+            int b = i < bTotalTime ? bRobot[i] : bRobot[bTotalTime-1];
+            if(a == b){
+                // 직전 위치가 다른 위치에 있을 때만 카운트한다.
                 if(lastIdx[0][0] != lastIdx[0][1]) {
                     cnt++;
                 }
             }
-            lastIdx[0][0] = aRobot[i];
-            lastIdx[0][1] = bRobot[i];
+            lastIdx[0][0] = a;
+            lastIdx[0][1] = b;
         }
 
         System.out.println(cnt);
