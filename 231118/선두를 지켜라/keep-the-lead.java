@@ -38,21 +38,23 @@ public class Main {
             totalDistance = bArr[curIdx-1];
         }
 
-        for (int i = 0; i < curIdx; i++) {
-            if(bArr[i] > aArr[i]) totalArr[i] = 1;
-            else if(bArr[i] < aArr[i]) totalArr[i] = 2;
-        }
-
         int cnt = 0;
-        int lastIdx = 0;
+        int leader = 0;
         for (int i = 0; i < curIdx; i++) {
-            if(totalArr[i] > 0 && lastIdx != totalArr[i]){
-                lastIdx =totalArr[i];
-                cnt++;
+            if(bArr[i] > aArr[i]){
+                if(leader == 2) {
+                    cnt++;
+                }
+                leader = 1;
+            }
+            else if(bArr[i] < aArr[i]){
+                if(leader == 1) {
+                    cnt++;
+                }
+                leader = 2;
             }
         }
-
-        System.out.println(cnt == 0 ? cnt : cnt-1);
+        System.out.println(cnt);
 
     }
 }
