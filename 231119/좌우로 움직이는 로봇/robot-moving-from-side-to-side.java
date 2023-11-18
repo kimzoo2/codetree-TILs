@@ -58,7 +58,7 @@ public class Main {
 
         int cnt = 0;
         int[][] lastIdx = new int[1][2];
-        for (int i = 1; i < bTotalDistance; i++) {
+        for (int i = 1; i <= bTotalTime; i++) {
             if(aRobot[i] == bRobot[i]){
                 // 직전 위치에 다른 위치에 있을 때만 카운트한다.
                 if(lastIdx[0][0] != lastIdx[0][1]) {
@@ -68,5 +68,7 @@ public class Main {
             lastIdx[0][0] = aRobot[i];
             lastIdx[0][1] = bRobot[i];
         }
+
+        System.out.println(cnt);
     }
 }
