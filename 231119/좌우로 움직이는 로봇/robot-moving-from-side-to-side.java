@@ -39,19 +39,12 @@ public class Main {
         }
 
         int cnt = 0;
-        int[][] lastIdx = new int[1][2];
         int totalIdx = Math.max(aTotalTime, bTotalTime);
-        for (int i = 0; i < totalIdx; i++) {
-            int a = i < aTotalTime ? aRobot[i] : aRobot[aTotalTime-1];
-            int b = i < bTotalTime ? bRobot[i] : bRobot[bTotalTime-1];
-            if(a == b){
+        for (int i = 1; i <= totalIdx; i++) {
+            if(aRobot[i] == bRobot[i] && aRobot[i - 1] != bRobot[i - 1])
                 // 직전 위치가 다른 위치에 있을 때만 카운트한다.
-                if(lastIdx[0][0] != lastIdx[0][1]) {
-                    cnt++;
-                }
-            }
-            lastIdx[0][0] = a;
-            lastIdx[0][1] = b;
+                cnt++;
+            
         }
 
         System.out.println(cnt);
