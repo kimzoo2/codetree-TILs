@@ -38,16 +38,22 @@ public class Main {
 
         // 감염된 시간을 담고 있는 배열
         for (int i = 0; i < t; i++) {
-            int developer = handShakeList[i][1];
-            int anotherDeveloper = handShakeList[i][2];
-            if(infectionCntList[developer] > 0){
-                infectionCntList[developer]--;
-                infectionCntList[anotherDeveloper] = k;
-                programmers[anotherDeveloper] = 1;
-            }else if(infectionCntList[anotherDeveloper] > 0){
-                infectionCntList[anotherDeveloper]--;
-                infectionCntList[developer] = k;
-                programmers[developer] = 1;
+            int x = handShakeList[i][1];
+            int y = handShakeList[i][2];
+
+            if(infectionCntList[x] > 0){
+                infectionCntList[x]--;
+                if(programmers[y] == 0) {
+                    infectionCntList[y] = k;
+                }
+                programmers[y] = 1;
+
+            }else if(infectionCntList[y] > 0){
+                infectionCntList[y]--;
+                if(programmers[x] == 0) {
+                    infectionCntList[x] = k;
+                }
+                programmers[x] = 1;
             }
         }
 
