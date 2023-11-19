@@ -41,7 +41,10 @@ public class Main {
             int x = handShakeList[i][1];
             int y = handShakeList[i][2];
 
-            if(infectionCntList[x] > 0){
+            if(infectionCntList[x] > 0 && infectionCntList[y] > 0){
+                infectionCntList[x]--;
+                infectionCntList[y]--;
+            }else if(infectionCntList[x] > 0){
                 infectionCntList[x]--;
                 if(programmers[y] == 0) {
                     infectionCntList[y] = k;
