@@ -40,9 +40,14 @@ public class Main {
         for (int i = 0; i < t; i++) {
             int developer = handShakeList[i][1];
             int anotherDeveloper = handShakeList[i][2];
-            if(infectionCntList[developer]-- > 0){
+            if(infectionCntList[developer] > 0){
+                infectionCntList[developer]--;
                 infectionCntList[anotherDeveloper] = k;
                 programmers[anotherDeveloper] = 1;
+            }else if(infectionCntList[anotherDeveloper] > 0){
+                infectionCntList[anotherDeveloper]--;
+                infectionCntList[developer] = k;
+                programmers[developer] = 1;
             }
         }
 
