@@ -15,7 +15,7 @@ public class Main {
             int v = Integer.parseInt(input[0]);
             int t = Integer.parseInt(input[1]);
             while(t-- > 0) {
-                aDistance[curIdx] = aDistance[curIdx] + v;
+                aDistance[curIdx] = aDistance[curIdx-1] + v;
                 curIdx++;
             }
         }
@@ -25,7 +25,7 @@ public class Main {
             int v = Integer.parseInt(input[0]);
             int t = Integer.parseInt(input[1]);
             while(t-- > 0) {
-                bDistance[curIdx] = bDistance[curIdx] + v;
+                bDistance[curIdx] = bDistance[curIdx-1] + v;
                 curIdx++;
             }
         }
