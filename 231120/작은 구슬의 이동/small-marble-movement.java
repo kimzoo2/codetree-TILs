@@ -11,8 +11,8 @@ public class Main {
         int[] dx = {0, -1, 0, 1};
 
         String[] input = br.readLine().split(" ");
-        int y = Integer.parseInt(input[0]) -1;
-        int x = Integer.parseInt(input[1]) -1;
+        int x = Integer.parseInt(input[0]) -1;
+        int y = Integer.parseInt(input[1]) -1;
         int dirNum = getDirectionNumber(input[2].charAt(0));
         for (int i = 0; i < t; i++) {
             x += dx[dirNum];
@@ -24,7 +24,7 @@ public class Main {
             }
         }
 
-        System.out.println(x + " " + y);
+        System.out.println(x+1 + " " + (y+1));
     }
     private static int getDirectionNumber(char charAt) {
         switch (charAt){
