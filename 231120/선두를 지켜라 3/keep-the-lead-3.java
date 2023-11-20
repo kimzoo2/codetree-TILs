@@ -35,20 +35,20 @@ public class Main {
             if(aDistance[i] == bDistance[i]) {
                 if(lastRanking != 3) {
                     cnt++;
+                    lastRanking = 3;
                 }
-                lastRanking = 3;
             }
             else if(aDistance[i] > bDistance[i]) {
                 if(lastRanking != 1) {
                     cnt++;
+                    lastRanking = 1;
                 }
-                lastRanking = 1;
             }
             else {
                 if(lastRanking != 2) {
                     cnt++;
+                    lastRanking = 2;
                 }
-                lastRanking = 2;
             }
         }
         System.out.println(cnt);
