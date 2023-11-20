@@ -14,8 +14,8 @@ public class Main {
         //R이면 오른쪽 90도
         for (int i = 0; i < len; i++) {
             char direction = input.charAt(i);
-            if(direction == 'L') dirNum = (dirNum + 1) % 4;
-            else if (direction== 'R') dirNum = (dirNum - 1 + 4) % 4;
+            if(direction == 'L') dirNum = (dirNum - 1 + 4) % 4;
+            else if (direction== 'R') dirNum = (dirNum + 1) % 4;
             else {
                 x += dx[dirNum];
                 y += dy[dirNum];
