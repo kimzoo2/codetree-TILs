@@ -31,21 +31,21 @@ public class Main {
         }
         int lastRanking = 0;
         int cnt = 0;
-        for (int i = 0; i < curIdx; i++) {
+        for (int i = 1; i < curIdx; i++) {
             if(aDistance[i] == bDistance[i]) {
-                if(lastRanking == 2 || lastRanking == 1) {
+                if(lastRanking != 3) {
                     cnt++;
                 }
                 lastRanking = 3;
             }
             else if(aDistance[i] > bDistance[i]) {
-                if(lastRanking == 2 || lastRanking == 3) {
+                if(lastRanking != 1) {
                     cnt++;
                 }
                 lastRanking = 1;
             }
             else {
-                if(lastRanking == 1 || lastRanking == 3) {
+                if(lastRanking != 2) {
                     cnt++;
                 }
                 lastRanking = 2;
