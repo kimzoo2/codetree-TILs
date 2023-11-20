@@ -8,7 +8,7 @@ public class Main {
         int t = Integer.parseInt(s[1]); // 시간
         INPUT_N = n;
         int[] dy = {1, 0, -1, 0};
-        int[] dx = {0, -1, 0, 1};
+        int[] dx = {0, 1, 0, -1};
 
         String[] input = br.readLine().split(" ");
         int x = Integer.parseInt(input[0]) -1;
