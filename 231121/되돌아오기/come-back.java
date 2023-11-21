@@ -13,16 +13,21 @@ public class Main {
         int[][] grid = new int[MAX_LEN][MAX_LEN];
         int x = OFFSET;
         int y = OFFSET;
+        boolean isReturn = false;
 
         for (int i = 0; i < cnt; i++) {
             String[] strings = br.readLine().split(" ");
             char direction = strings[0].charAt(0);
             int distance = Integer.parseInt(strings[1]);
             dirNum = getDirNum(direction);
-            if(getSecond(distance,dirNum)) break;
+
+            if(getSecond(distance,dirNum)) {
+                isReturn = true;
+                break;
+            }
         }
 
-        System.out.println(SECOND == 0 ? -1 : SECOND);
+        System.out.println(isReturn ? SECOND : -1);
     }
 
     private static boolean getSecond(int distance, int dirNum) {
