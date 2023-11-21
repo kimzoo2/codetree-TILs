@@ -15,7 +15,7 @@ public class Main {
             int x = Integer.parseInt(targets[0]);
             int y = Integer.parseInt(targets[1]);
             grid[x][y] = 1;
-            if(getCozyStatus(x, y, grid)){
+            if(isCozyStatus(x, y, grid)){
                 System.out.println(1);
             }else{
                 System.out.println(0);
@@ -23,7 +23,7 @@ public class Main {
         }
     }
 
-    private static boolean getCozyStatus(int x, int y, int[][] grid){
+    private static boolean isCozyStatus(int x, int y, int[][] grid){
         int[] dx = {1, 0, -1, 0};
         int[] dy = {0, 1, 0, -1};
         int cnt = 0;
