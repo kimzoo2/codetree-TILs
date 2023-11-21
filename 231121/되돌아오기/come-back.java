@@ -1,18 +1,13 @@
 import java.io.*;
 
 public class Main {
-    static int OFFSET = 1_000;
-    static int MAX_LEN = OFFSET * 2 + 1;
     static int SECOND = 0;
-    static int X = OFFSET;
-    static int Y = OFFSET;
+    static int X = 0;
+    static int Y = 0;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int cnt = Integer.parseInt(br.readLine());
         int dirNum = 0;
-        int[][] grid = new int[MAX_LEN][MAX_LEN];
-        int x = OFFSET;
-        int y = OFFSET;
         boolean isReturn = false;
 
         for (int i = 0; i < cnt; i++) {
@@ -38,7 +33,7 @@ public class Main {
             X += dx[dirNum];
             Y += dy[dirNum];
 
-            if(X == OFFSET && Y == OFFSET){
+            if(X == 0 && Y == 0){
                 return true;
             }
         }
