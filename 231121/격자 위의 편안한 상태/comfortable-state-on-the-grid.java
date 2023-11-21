@@ -36,7 +36,7 @@ public class Main {
             }
         }
 
-        return cnt == 3 ? true : false;
+        return cnt == 3;
     }
 
     private static boolean inRange(int x, int y){
