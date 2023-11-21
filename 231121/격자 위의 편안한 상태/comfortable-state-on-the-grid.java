@@ -1,6 +1,8 @@
 import java.io.*;
 public class Main {
     static int n = 0;
+    static int[] dx = {1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
@@ -24,8 +26,6 @@ public class Main {
     }
 
     private static boolean isCozyStatus(int x, int y, int[][] grid){
-        int[] dx = {1, 0, -1, 0};
-        int[] dy = {0, 1, 0, -1};
         int cnt = 0;
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
