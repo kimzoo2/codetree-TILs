@@ -19,7 +19,7 @@ public class Main {
             if(direction == 'R') // 오른쪽 90도
                 dirNum = (dirNum + 1) % 4;
             else if(direction == 'L')
-                dirNum = (dirNum - 1) % 4;
+                dirNum = (dirNum + 3) % 4;
             else {
                 x += dx[dirNum];
                 y += dy[dirNum];
