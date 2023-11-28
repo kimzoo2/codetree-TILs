@@ -10,9 +10,9 @@ public class Main {
         char[][] grid = new char[n][m];
 
         for (int i = 0; i < n; i++) {
-            String str = br.readLine();
+            String[] input = br.readLine().split(" ");
             for (int j = 0; j < m; j++) {
-                grid[i][j] = str.charAt(j);
+                grid[i][j] = input[j].charAt(0);
             }
         }
 
