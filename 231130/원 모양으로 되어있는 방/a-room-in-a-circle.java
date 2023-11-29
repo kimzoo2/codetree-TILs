@@ -17,8 +17,7 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 int distance = 0;
                 if (i == j) continue;
-                else if (i > j) distance = Math.abs(n - i) + j;
-                else distance = Math.abs(j - i);
+                distance = (j + n - i) % n;
                 sum += room[j] * distance;
             }
             min = Math.min(min, sum);
