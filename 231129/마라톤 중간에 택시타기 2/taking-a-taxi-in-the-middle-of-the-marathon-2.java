@@ -13,15 +13,14 @@ public class Main {
         int min = Integer.MAX_VALUE;
         int idx = 1;
         int x1, y1, x2, y2;
-        x1 = x2 = y1 = y2 = 0;
+        x1 = y1= x2 = y2 = 0;
 
         for (int i = 0; i<n-2; i++) {
             int sum = 0;
-            x1 = 0;
-            y1 = 0;
+            x1 = checkPoints[0][0];
+            y1 = checkPoints[0][1];
             for (int j = 1; j < n-1; j++) {
                 if(idx == j) continue;
-
                 x2 = checkPoints[j][0];
                 y2 = checkPoints[j][1];
 
@@ -30,7 +29,7 @@ public class Main {
                 y1 = y2;
             }
             idx++;
-            sum += Math.abs(x1 - checkPoints[n-1][0]) + Math.abs(y1 - checkPoints[n-1][1]);
+            sum += Math.abs(x1 - checkPoints[n-1][0])+Math.abs(y1 - checkPoints[n-1][1]);
             min = Math.min(min, sum);
         }
 
