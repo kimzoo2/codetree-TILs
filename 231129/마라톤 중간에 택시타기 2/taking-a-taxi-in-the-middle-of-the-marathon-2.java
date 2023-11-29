@@ -19,7 +19,7 @@ public class Main {
             int sum = 0;
             x1 = checkPoints[0][0];
             y1 = checkPoints[0][1];
-            for (int j = 1; j < n-1; j++) {
+            for (int j = 1; j < n; j++) {
                 if(idx == j) continue;
                 x2 = checkPoints[j][0];
                 y2 = checkPoints[j][1];
