@@ -66,29 +66,27 @@ public class Main {
         return true;
     }
 
-    private static boolean containsUpwardRight(int x, int y){
-        int color = board[x][y];
-        for (int i = x; i < x + 5; i++) {
-            for (int j = x; j < x + 1; j++) {
-                if (!inRange(x, i) || board[i][j] != color) {
-                    return false;
-                }
-            }
-        }
-        ansX = x+2;
-        ansY = y+2;
-        return true;
-    }
-
-    private static boolean containsDownwardRight(int x, int y){
+    private static boolean containsUpwardRight(int x, int y) {
         int color = board[x][y];
         for (int i = x; i > x - 5; i--) {
             if (!inRange(i, y) || board[i][y++] != color) {
                 return false;
             }
         }
-        ansX = x-2;
-        ansY = y+2;
+        ansX = x - 2;
+        ansY = y - 3;
+        return true;
+    }
+
+    private static boolean containsDownwardRight(int x, int y) {
+        int color = board[x][y];
+        for (int i = x; i < x + 5; i++) {
+            if (!inRange(i, y) || board[i][y++] != color) {
+                return false;
+            }
+        }
+        ansX = x + 2;
+        ansY = y - 3;
         return true;
     }
 
