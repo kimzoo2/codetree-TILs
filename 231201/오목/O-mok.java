@@ -53,15 +53,15 @@ public class Main {
         ansY = y+2;
         return true;
     }
-    private static boolean containsColumn(int x, int y){
+    private static boolean containsColumn(int x, int y) {
         int color = board[x][y];
-        for (int i = x; i < y + 5; i++) {
+        for (int i = x; i < x + 5; i++) {
             // 범위를 넘기거나 다른 색이면 false
-            if (!inRange(x, i) || board[i][y] != color) {
+            if (!inRange(i, y) || board[i][y] != color) {
                 return false;
             }
         }
-        ansX = x+2;
+        ansX = x + 2;
         ansY = y;
         return true;
     }
