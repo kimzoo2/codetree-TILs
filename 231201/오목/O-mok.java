@@ -8,14 +8,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for (int i = 1; i < LEN; i++) {
+        for (int i = 1; i <= LEN; i++) {
             String[] split = br.readLine().split(" ");
-            for (int j = 1; j < LEN; j++) {
+            for (int j = 1; j <= LEN; j++) {
                 board[i][j] = Integer.parseInt(split[j - 1]);
             }
         }
-        for (int i = 1; i < LEN; i++) {
-            for (int j = 1; j < LEN; j++) {
+        for (int i = 1; i <= LEN; i++) {
+            for (int j = 1; j <= LEN; j++) {
                 if (board[i][j] != 0 && isCorrect(i, j)) {
                     break;
                 }
@@ -90,6 +90,6 @@ public class Main {
     }
 
     private static boolean inRange(int x, int y) {
-        return (x >= 0 && y >= 0 && x < LEN && y < LEN);
+        return (x >= 0 && y >= 0 && x <= LEN && y <= LEN);
     }
 }
