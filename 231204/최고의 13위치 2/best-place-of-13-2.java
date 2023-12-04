@@ -15,7 +15,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n-2; j++) {
                 int cnt = grid[i][j] + grid[i][j+1] + grid[i][j+2];
-                for (int k = 0; k < n; k++) {
+                for (int k = i; k < n; k++) {
                     for (int l = 0; l < n-2; l++) {
                         if(i == k && l <= j+2) continue;
                         int cnt2 = grid[k][l] + grid[k][l+1] + grid[k][l+2];
