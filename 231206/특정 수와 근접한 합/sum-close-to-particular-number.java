@@ -13,15 +13,15 @@ public class Main {
         }
 
         int min = Integer.MAX_VALUE;
+        int arrSum = 0;
+
+        for (int i = 0; i < n; i++) {
+            arrSum += arr[i];
+        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if(i == j) continue;
-                int sum = 0;
-                for (int l = 0; l < n; l++) {
-                    if(l == i || l == j) continue;
-                    sum += arr[l];
-                }
+                int sum = arrSum - arr[i] - arr[j];
                 min = Math.min(min, Math.abs(k-sum));
             }
         }
