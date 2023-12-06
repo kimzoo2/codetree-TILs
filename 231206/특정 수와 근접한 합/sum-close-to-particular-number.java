@@ -20,8 +20,7 @@ public class Main {
         }
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if(i == j) continue;
+            for (int j = i+1; j < n; j++) {
                 int sum = arrSum - arr[i] - arr[j];
                 min = Math.min(min, Math.abs(sum-k));
             }
