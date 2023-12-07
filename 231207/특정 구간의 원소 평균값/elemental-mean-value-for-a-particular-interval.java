@@ -13,13 +13,13 @@ public class Main {
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < n-i; j++) {
                 int sum = 0;
-                for (int k = j; k <= j+i; k++) {
+                for (int k = j; k < j+i; k++) {
                     sum+= arr[k];
                 }
-                int avg = sum/2;
+                int avg = sum/i;
 
                 // 평균값이 구간의 값 중 하나가 되면 카운트를 증가한다.
-                for (int k = j; k <= j+i; k++) {
+                for (int k = j; k < j+i; k++) {
                     if(avg == arr[k]){
                         cnt++;
                         break;
