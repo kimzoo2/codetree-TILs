@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -13,6 +14,7 @@ public class Main {
 
         int[] aArr = new int[n];
         int[] bArr = new int[m];
+        boolean[] booleans = new boolean[m];
 
         String[] a = br.readLine().split(" ");
         String[] b = br.readLine().split(" ");
@@ -29,11 +31,13 @@ public class Main {
         int cnt = 0;
 
         for (int i = 0; i <= n - m; i++) {
-            isCorrect = false;
+            isCorrect = true;
+            Arrays.fill(booleans, false);
             for (int j = i; j < i+m; j++) {
                 for (int k = 0; k < m; k++) {
                     // A 수열의 숫자가 B 수열에 존재하면 true로 변경한다.
-                    if(aArr[j] == bArr[k]) {
+                    if(aArr[j] == bArr[k] && booleans[k] == false) {
+                        booleans[k] = true;
                         isCorrect = true;
                         break;
                     }
