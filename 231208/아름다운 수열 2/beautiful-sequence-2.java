@@ -14,7 +14,7 @@ public class Main {
 
         int[] aArr = new int[n];
         int[] bArr = new int[m];
-        boolean[] booleans = new boolean[m];
+        int[] tempArr = new int[m];
 
         String[] a = br.readLine().split(" ");
         String[] b = br.readLine().split(" ");
@@ -27,26 +27,24 @@ public class Main {
         }
 
         // B 수열의 숫자가 존재하면서 연속해야 함.
-        boolean isCorrect = false;
+        boolean isCorrect = true;
         int cnt = 0;
+        Arrays.sort(bArr);
 
         for (int i = 0; i <= n - m; i++) {
             isCorrect = true;
-            Arrays.fill(booleans, false);
-            for (int j = i; j < i+m; j++) {
-                for (int k = 0; k < m; k++) {
-                    // A 수열의 숫자가 B 수열에 존재하면 true로 변경한다.
-                    if(aArr[j] == bArr[k] && booleans[k] == false) {
-                        booleans[k] = true;
-                        isCorrect = true;
-                        break;
-                    }
-                    isCorrect = false;
-                }
-                // A 수열의 숫자가 B 수열에 존재하지 않으면 끝낸다.
-                if(isCorrect == false) break;
+            for (int j = 0; j < m; j++) {
+                tempArr[j] = aArr[j+i];
             }
-            // A 수열의 숫자가 B 수열에 모두 존재하면 카운트를 증가 시킨다.
+
+            Arrays.sort(tempArr);
+
+            for (int j = 0; j < m; j++) {
+                if(tempArr[j] != bArr[j]){
+                    isCorrect = false;
+                    break;
+                }
+            }
             if(isCorrect == true) cnt++;
         }
 
