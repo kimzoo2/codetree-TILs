@@ -1,6 +1,7 @@
 import java.io.*;
 public class Main {
-    static int MAX_LEN = 100;
+    static int MAX_LEN = 500;
+    static int OFFSET = 200;
     public static void main(String[] args) throws IOException {
         //1차원 직선 위에 총 N개의 바구니가 놓여 있고, 바구니 안에는 사탕이 담겨 있습니다.
         // 중심점 c를 잘 잡아 [c-K, c+K] 구간에 있는 사탕의 수가 최대가 되도록 하는 프로그램을 작성해보세요
@@ -14,7 +15,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             String[] basketInfo = br.readLine().split(" ");
             int candyCnt = Integer.parseInt(basketInfo[0]);
-            int idx = Integer.parseInt(basketInfo[1]);
+            int idx = Integer.parseInt(basketInfo[1]) + OFFSET;
             baskets[idx] += candyCnt;
         }
 
