@@ -7,7 +7,7 @@ public class Main {
         int b = Integer.parseInt(input[1]);
         int sum = 0;
         int min = b;
-        for (int i = a; i < b; i++) {
+        for (int i = a; i <= b; i++) {
             if(isPrime(i)){
                 min = Math.min(min, i);
                 sum += i;
