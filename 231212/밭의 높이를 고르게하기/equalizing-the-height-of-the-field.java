@@ -20,12 +20,7 @@ public class Main {
         for (int i = 0; i <= n-t; i++) {
             int cost = 0;
             for (int j = i; j < i+t; j++) {
-                int height = fields[j];
-                while(height != h){
-                    if(height > h) height--;
-                    else height++;
-                    cost++;
-                }
+                cost += Math.abs(fields[j] - h);
             }
             minCost = Math.min(minCost, cost);
         }
