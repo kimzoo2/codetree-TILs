@@ -21,8 +21,8 @@ public class Main {
             int cost = 0;
             for (int j = i; j < i+t; j++) {
                 int height = fields[j];
-                while(height != 3){
-                    if(height > 3) height--;
+                while(height != h){
+                    if(height > h) height--;
                     else height++;
                     cost++;
                 }
