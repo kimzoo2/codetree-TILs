@@ -21,12 +21,12 @@ public class Main {
         for (int i = 1; i <= MAX_LEN2; i++) {
             int gCnt = 0;
             int hCnt = 0;
-            if(arr[i] == '\u0000') continue;
             for (int j = i; j <= MAX_LEN2; j++) {
+                if(arr[i] == '\u0000' || arr[j] == '\u0000') continue;
                 if(arr[j] == 'G') gCnt++;
                 else if(arr[j] == 'H') hCnt++;
 
-                if(arr[j] != '\u0000' && gCnt==hCnt) {
+                if(gCnt==hCnt) {
                     max= Math.max(max, j-i);
                 }
             }
