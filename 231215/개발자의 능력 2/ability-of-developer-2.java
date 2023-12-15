@@ -19,34 +19,21 @@ public class Main {
 
         int minAbility = Integer.MAX_VALUE;
         for (int i = 0; i < LENGTH; i++) {
-            for (int j = 0; j < LENGTH; j++) {
+            for (int j = i+1; j < LENGTH; j++) {
                 for (int k = 0; k < LENGTH; k++) {
-                    for (int l = 0; l < LENGTH; l++) {
-                        if (i == j || j == k || j == i || k == i || l == i || l == j || l == k) continue;
+                    for (int l = k+1; l < LENGTH; l++) {
+                        if(k == i || k == j || l == i || l == j) continue;
 
                         // 팀간의 능력
                         int team1 = developerAbilityList[i] + developerAbilityList[j];
                         int team2 = developerAbilityList[k] + developerAbilityList[l];
                         int team3 = sum - team1 - team2;
-
-                        int max = team1;
-                        int min = team1;
-
+                        
                         // 가장 점수가 높은 팀
-                        if (max < team2) {
-                            max = team2;
-                            if (max < team3) max = team3;
-                        }else if (max < team3) {
-                            max = team3;
-                        }
-                        // 가장 점수가 낮은 팀
-                        if (min > team2) {
-                            min = team2;
-                            if (min > team3) min = team3;
-                        }else if(min > team3){
-                            min = team3;
-                        }
-                        minAbility = Math.min(minAbility, max - min);
+                        int ret = Math.abs(team1 - team2);
+                        ret = Math.max(ret, Math.abs(team2 - team3));
+                        ret = Math.max(ret, Math.abs(team3 - team1));
+                        minAbility = Math.min(minAbility, ret);
                     }
                 }
             }
