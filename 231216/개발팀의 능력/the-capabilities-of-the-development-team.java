@@ -37,7 +37,7 @@ public class Main {
                 }
             }
         }
-        System.out.println(minAbility == 0 ? -1 : minAbility);
+        System.out.println(minAbility == Integer.MAX_VALUE ? -1 : minAbility);
 
     }
 }
