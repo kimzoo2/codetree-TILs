@@ -26,7 +26,7 @@ public class Main {
                         int team1 = developerAbilityList[i] + developerAbilityList[j];
                         int team2 = developerAbilityList[k] + developerAbilityList[l];
                         int team3 = sum - team1 - team2;
-                        if(team3 != team2 && team2 != team1) {
+                        if(team3 != team2 && team2 != team1 && team1 != team3) {
                             // 가장 점수가 높은 팀
                             int ret = Math.abs(team1 - team2);
                             ret = Math.max(ret, Math.abs(team2 - team3));
