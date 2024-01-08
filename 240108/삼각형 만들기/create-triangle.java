@@ -28,13 +28,15 @@ public class Main {
 
     private static int getMaxArea(int i1, int i2, int i3, int[][] arr){
         int area = 0;
+        int x1 = arr[i1][0], x2 = arr[i2][0], x3 = arr[i3][0];
+        int y1 = arr[i1][1], y2 = arr[i2][1], y3 = arr[i3][1];
         // x가 평행한가?
-        if(arr[i1][0] == arr[i2][0] || arr[i2][0] == arr[i3][0] ||arr[i1][0] == arr[i3][0]){
+        if(x1 == x2 || x2 == x3 || x1 == x3){
             // y가 평행한가?
-            if(arr[i1][1] == arr[i2][1] || arr[i2][1] == arr[i3][1] ||arr[i1][1] == arr[i3][1]){
+            if(y1 == y2 || y2 == y3 ||y1 == y3){
                 //
-                int a = (arr[i1][0] * arr[i2][1] + arr[i2][0] * arr[i3][1] + arr[i3][0]*arr[i1][1]);
-                int b = (arr[i2][0] * arr[i1][0] + arr[i3][0] * arr[i2][1] + arr[i1][0]*arr[i3][1]);
+                int a = (x1 * y2 + x2 * y3 + x3 * y1);
+                int b = (x2 * y1 + x3 * y2 + x1 * y3);
                 area = (a-b) / 2;
             }
         }
