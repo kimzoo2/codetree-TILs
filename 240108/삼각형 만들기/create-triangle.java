@@ -23,7 +23,7 @@ public class Main {
             }
         }
 
-        System.out.println(maxArea * 2);
+        System.out.println(maxArea);
     }
 
     private static int getMaxArea(int i1, int i2, int i3, int[][] arr){
@@ -37,7 +37,7 @@ public class Main {
                 //
                 int a = (x1 * y2 + x2 * y3 + x3 * y1);
                 int b = (x2 * y1 + x3 * y2 + x1 * y3);
-                area = (a-b) / 2;
+                area = (a-b);
             }
         }
         return area;
