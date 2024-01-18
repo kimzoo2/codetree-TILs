@@ -1,15 +1,13 @@
-import java.io.*;
-import java.util.Arrays;
+import java.util.*;
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] split = br.readLine().split(" ");
-        int cnt = Integer.parseInt(split[0]);
-        int budget = Integer.parseInt(split[1]);
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int cnt = sc.nextInt();
+        int budget = sc.nextInt();
         int[] students = new int[cnt];
 
         for (int i = 0; i < cnt; i++) {
-            students[i] = Integer.parseInt(br.readLine());
+            students[i] = sc.nextInt();
         }
 
         Arrays.sort(students);
