@@ -8,24 +8,34 @@ public class Main {
         String[] split = br.readLine().split(" ");
         int cnt = Integer.parseInt(split[0]);
         int budget = Integer.parseInt(split[1]);
-        Present[] presents = new Present[cnt];
+        int[][] presents = new int[cnt][2];
 
         for (int i = 0; i < cnt; i++) {
             String[] input = br.readLine().split(" ");
-            Present present = new Present(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
-            presents[i] = present;
+            presents[i][0] = Integer.parseInt(input[0]);
+            presents[i][1] = Integer.parseInt(input[1]);
         }
 
-        Arrays.sort(presents);
+
         int ans = 0;
         for (int i = 0; i < cnt; i++) {
+            int[][] tempPresent = new int[cnt][2];
+            for (int j = 0; j < cnt; j++) {
+                tempPresent[j][0] = presents[j][0];
+                tempPresent[j][1] = presents[j][1];
+                if(i == j) {
+                    tempPresent[j][0] = presents[j][0] / 2;
+                }
+            }
+
+            Arrays.sort(tempPresent, (o1, o2) -> {
+                return o1[0] + o1[1] -o2[0] + o2[1]; //합기준 오름차순
+            });
+
             int n = 0;
             int sum = 0;
             for (int j = 0; j < cnt; j++) {
-                int presentPrice = presents[j].price + presents[j].shipFee;
-                if(i == j)
-                    presentPrice = presents[i].sum;
-                sum += presentPrice;
+                sum += tempPresent[j][0] + tempPresent[j][1];
                 if(budget < sum) break;
                 n++;
             }
@@ -40,36 +50,5 @@ public class Main {
         // 8 1
         // 6 3
         // 12 5
-    }
-
-    static class Present implements Comparable<Present> {
-        private int price;
-        private int shipFee;
-        private int sum;
-
-        public Present(int price, int shipFee) {
-            this.price = price;
-            this.shipFee = shipFee;
-            this.sum = price/2 + shipFee;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public int getShipFee() {
-            return shipFee;
-        }
-
-        public int getSum() {
-            return sum;
-        }
-
-        @Override
-        public int compareTo(Present o) {
-            if(this.sum != o.sum)
-                return this.sum - o.sum;
-            return this.shipFee - o.shipFee;
-        }
     }
 }
