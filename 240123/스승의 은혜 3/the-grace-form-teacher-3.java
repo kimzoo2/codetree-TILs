@@ -22,7 +22,7 @@ public class Main {
             int n = 0;
             int sum = 0;
             for (int j = 0; j < cnt; j++) {
-                int presentPrice = presents[j].price;
+                int presentPrice = presents[j].price + presents[j].shipFee;
                 if(i == j)
                     presentPrice = presents[i].sum;
                 sum += presentPrice;
