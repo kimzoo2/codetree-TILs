@@ -29,7 +29,7 @@ public class Main {
             }
 
             Arrays.sort(tempPresent, (o1, o2) -> {
-                return o1[0] + o1[1] -o2[0] + o2[1]; //합기준 오름차순
+                return (o1[0] + o1[1]) -(o2[0] + o2[1]); //합기준 오름차순
             });
 
             int n = 0;
