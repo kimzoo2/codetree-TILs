@@ -23,9 +23,8 @@ public class Main {
 			int size = map.size();
 			if(size != 2) continue;
 
-			for (Integer value : map.keySet()) {
-				if(value == 1) ans++;
-			}
+			for (Integer key : map.keySet())
+				if (map.get(key) == 1) ans++;
 		}
 
 		System.out.println(ans);
