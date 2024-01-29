@@ -19,14 +19,10 @@ public class Main {
 		}
 
 		int ans = Integer.MIN_VALUE;
-		int[] temp = new int[cnt+1];
 		for (int i = min; i <= max; i++) {
 			int tipCnt = 0;
-			for (int j = 0; j <= cnt; j++) {
-				temp[j] = iceBergs[j]-i;
-			}
 			for (int j = 1; j <= cnt; j++) {
-				if(temp[j-1] <= 0 && temp[j] > 0) tipCnt++;
+				if(iceBergs[j-1] <= i && iceBergs[j] > i) tipCnt++;
 			}
 			ans = Math.max(ans, tipCnt);
 		}
