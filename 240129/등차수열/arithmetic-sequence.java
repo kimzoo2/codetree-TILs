@@ -27,7 +27,7 @@ public class Main {
 			int apCnt = 0;
 			for (int j = 0; j < cnt; j++) { // 3
 				for (int k = j+1; k < cnt; k++) { // 4
-					if(i - arr[j] == arr[k] - i) apCnt++;
+					if(arr[k] + arr[j] == 2 * i) apCnt++;
 				}
 			}
 			max = Math.max(max, apCnt);
