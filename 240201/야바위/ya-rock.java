@@ -20,9 +20,9 @@ public class Main {
 
 		for (int i = 0; i < n; i++) {
 			String[] strings = br.readLine().split(" ");
-			arr[i][0] = Integer.parseInt(strings[i]);
-			arr[i][1] = Integer.parseInt(strings[i]);
-			arr[i][2] = Integer.parseInt(strings[i]);
+			arr[i][0] = Integer.parseInt(strings[0]);
+			arr[i][1] = Integer.parseInt(strings[1]);
+			arr[i][2] = Integer.parseInt(strings[2]);
 		}
 
 		int ans = 0;
