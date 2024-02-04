@@ -16,31 +16,18 @@ public class Main {
 		int c = Integer.parseInt(split[2]);
 
 		int ans = 0;
-		for (int i = 0; i < 8; i++) {
-			getSum(a + b, a, c);
 
-			getSum(a + b, b, c);
+		for(int i = 0; i * a <= c; i++) {
+			int cnt = a * i;
 
-			getSum(a, a, c);
+			int numB = (c - cnt) / b;
 
-			getSum(b, b, c);
+			cnt += numB * b;
 
-			getSum(a + b, a + b, c);
-
-			getSum(a + b, a + b, c);
-
+			ans = Math.max(ans, cnt);
 		}
 
-		System.out.println(ANS);
+		System.out.println(ans);
 	}
 
-	private static int getSum(int sum, int a, int c) {
-		while (sum + a <= c) {
-			sum += a;
-		}
-
-		ANS = Math.max(ANS, sum);
-
-		return sum;
-	}
 }
