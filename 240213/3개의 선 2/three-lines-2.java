@@ -1,6 +1,7 @@
 import java.io.*;
 public class Main {
-    	static int MAX_LEN = 10;
+	static int MAX_LEN_X = 10;
+    static int MAX_LEN = 20;
 	static int[] x = new int[MAX_LEN + 1];
 	static int[] y = new int[MAX_LEN + 1];
     public static void main(String[] args) throws IOException {
@@ -30,9 +31,9 @@ public class Main {
 
 		int ans = 0;
 
-		for (int i = 0; i <= MAX_LEN; i++) {
-			for (int j = 0; j <= MAX_LEN; j++) {
-				for (int k = 0; k <= MAX_LEN; k++) {
+		for (int i = 0; i <= MAX_LEN_X; i++) {
+			for (int j = 0; j <= MAX_LEN_X; j++) {
+				for (int k = 0; k <= MAX_LEN_X; k++) {
 					boolean success = true;
 
 					for (int l = 0; l < len; l++) {
