@@ -29,8 +29,8 @@ public class Main {
 		}
 
 		int min = Integer.MAX_VALUE;
-		for (int i = 1; i <= MAX_LEN; i++) { // x
-			for (int j = 1; j <= MAX_LEN; j++) { // y
+		for (int i = 1; i <= MAX_LEN; i += 2) { // x
+			for (int j = 1; j <= MAX_LEN; j += 2) { // y
 				int[] segment = new int[5];
 
 				// 구간별 최대 점의 수를 구한다.
