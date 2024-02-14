@@ -31,40 +31,24 @@ public class Main {
 		int min = Integer.MAX_VALUE;
 		for (int i = 1; i <= MAX_LEN; i++) { // x
 			for (int j = 1; j <= MAX_LEN; j++) { // y
-				int sum = 0;
-				int max = Integer.MIN_VALUE;
-				boolean isOverlap = false;
+				int[] segment = new int[5];
 
 				// 구간별 최대 점의 수를 구한다.
 				for (int k = 0; k < cnt; k++) {
-					if(x[k] > i && y[k] > j) sum++;
-					if(x[k] == i || y[k] == j) isOverlap = true;
+					// k번째 점이 몇사분면인지 확인하고 해당 위치의 segment를 1 증가시킵니다.
+					if(x[k] > i && y[k] > j)
+						segment[1]++;
+					else if(x[k] < i && y[k] > j)
+						segment[2]++;
+					else if(x[k] < i && y[k] < j)
+						segment[3]++;
+					else
+						segment[4]++;
 				}
-				max = Math.max(max, sum);
-
-				sum = 0;
-				for (int k = 0; k < cnt; k++) {
-					if(x[k] < i && y[k] > j) sum++;
-					if(x[k] == i || y[k] == j) isOverlap = true;
+				int max = Integer.MIN_VALUE;
+				for (int k = 0; k < 5; k++) {
+					max = Math.max(max, segment[k]);
 				}
-				max = Math.max(max, sum);
-
-				sum = 0;
-				for (int k = 0; k < cnt; k++) {
-					if(x[k] < i && y[k] < j) sum++;
-					if(x[k] == i || y[k] == j) isOverlap = true;
-				}
-				max = Math.max(max, sum);
-
-				sum = 0;
-				for (int k = 0; k < cnt; k++) {
-					if(x[k] > i && y[k] < j) sum++;
-					if(x[k] == i || y[k] == j) isOverlap = true;
-				}
-				max = Math.max(max, sum);
-
-				if(isOverlap) continue;
-
 				// 최대 점의 수 중에 최솟값을 구한다.
 				min = Math.min(min, max);
 			}
