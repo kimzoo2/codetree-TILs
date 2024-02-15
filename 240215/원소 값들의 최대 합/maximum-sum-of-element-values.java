@@ -16,7 +16,6 @@ public class Main {
 			int sum = 0;
 			int idx = arr[i]; // 위치 값을 구한다.
 			for (int j = 0; j < move; j++) {
-				// if(idx == arr[idx-1]) break; // 위치값이 인덱스와 동일하면 해당 시작 위치는 멈춘다.
 				sum += idx; // 위치 값을 더한다.
 				idx = arr[idx -1]; // 위치값을 인덱스로 전환한다.
 			}
