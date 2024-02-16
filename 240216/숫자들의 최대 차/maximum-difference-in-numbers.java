@@ -28,7 +28,7 @@ public class Main {
 		for (int i = min; i < max; i++) {
 			int cnt = 0;
 			for (int j = 0; j < n; j++) {
-				if(i<=j && j<=i+k) cnt++;
+				if(i<=arr[j] && arr[j]<=i+k) cnt++;
 			}
 			ans = Math.max(ans, cnt);
 		}
