@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +28,7 @@ public class Main {
 	}
 
 	public static void merge(int[] arr, int low, int mid, int high){
-		int[] temp = new int[arr.length];
+		ArrayList<Integer> list = new ArrayList<>();
 
 		int i = low; // 왼쪽 기준
 		int j = mid + 1; // 가운데 기준
@@ -34,26 +36,26 @@ public class Main {
 
 		while(i <= mid && j <= high){
 			if(arr[i] < arr[j]){
-				temp[k] = arr[i];
+				list.add(arr[i]);
 				k++; i++;
 			}else{
-				temp[k] = arr[j];
+				list.add(arr[j]);
 				k++; j++;
 			}
 		}
 
 		while(i <= mid){
-			temp[k] = arr[i];
+			list.add(arr[i]);
 			k++; i++;
 		}
 
 		while(j <= high){
-			temp[k] = arr[j];
+			list.add(arr[j]);
 			k++; j++;
 		}
-
+		int idx = 0;
 		for (int l = low; l <= high; l++) {
-			arr[l] = temp[l];
+			arr[l] = list.get(idx++);
 		}
 	}
 }
