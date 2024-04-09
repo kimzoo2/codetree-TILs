@@ -1,7 +1,8 @@
 import java.io.*;
-import java.util.ArrayList;
 
 public class Main {
+	public static final int MAX_N = 100000;
+	public static int[] mergedArr = new int[MAX_N];
     public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
@@ -28,34 +29,27 @@ public class Main {
 	}
 
 	public static void merge(int[] arr, int low, int mid, int high){
-		ArrayList<Integer> list = new ArrayList<>();
-
 		int i = low; // 왼쪽 기준
 		int j = mid + 1; // 가운데 기준
 		int k = low; // 시작점
 
 		while(i <= mid && j <= high){
 			if(arr[i] < arr[j]){
-				list.add(arr[i]);
-				k++; i++;
+				 mergedArr[k++] = arr[i++];  
 			}else{
-				list.add(arr[j]);
-				k++; j++;
+				 mergedArr[k++] = arr[j++];  
 			}
 		}
 
 		while(i <= mid){
-			list.add(arr[i]);
-			k++; i++;
+			mergedArr[k++] = arr[i++];
 		}
 
 		while(j <= high){
-			list.add(arr[j]);
-			k++; j++;
+			mergedArr[k++] = arr[j++];
 		}
-		int idx = 0;
 		for (int l = low; l <= high; l++) {
-			arr[l] = list.get(idx++);
+			 arr[l] = mergedArr[l];
 		}
 	}
 }
