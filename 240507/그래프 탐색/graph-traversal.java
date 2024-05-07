@@ -7,8 +7,8 @@ public class Main {
 		for (int i = 1; i < GRAPH[vertex].length; i++) {
 			if(GRAPH[vertex][i] == 1 && !checked[i]){
 				checked[i] = true;
+                CNT++;
 				searchGraph(i);
-				CNT++;
 			}
 		}
 	}
@@ -24,8 +24,9 @@ public class Main {
 			GRAPH[start][end] = 1;
 			GRAPH[end][start] = 1;
 		}
+        checked[1] = true;
 		searchGraph(1);
 
-		System.out.println(CNT == 0 ? CNT : --CNT);
+		System.out.println(CNT);
     }
 }
