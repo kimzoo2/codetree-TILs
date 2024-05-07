@@ -26,6 +26,6 @@ public class Main {
 		}
 		searchGraph(1);
 
-		System.out.println(--CNT);
+		System.out.println(CNT == 0 ? CNT : --CNT);
     }
 }
