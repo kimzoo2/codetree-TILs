@@ -9,14 +9,15 @@ public class Main {
 		int n = Integer.parseInt(input[0]);
 		int m = Integer.parseInt(input[1]);
 		int[][] maps = new int[n][m];
-		boolean[][] visited = new boolean[n][m];
+		boolean[][] checked = new boolean[n][m];
 		for (int i = 0; i < n; i++) {
 			String[] map = br.readLine().split(" ");
 			for (int j = 0; j < m; j++) {
 				maps[i][j] = Integer.parseInt(map[j]);
 			}
 		}
-		System.out.println(bfs(maps, visited));
+        bfs(maps, checked);
+		System.out.println(checked[n-1][m-1] ? 1 : 0);
     }
     private static boolean isRange(int x, int y, int xLen, int yLen){
 		return x >= 0 && x < xLen && y >= 0 && y < yLen;
@@ -30,9 +31,6 @@ public class Main {
 			int[] ints = queue.poll();
 			int x = ints[0];
 			int y = ints[1];
-			if(maps.length-1 == x && maps[0].length-1 == y && maps[x][y] > 0){
-				return 1;
-			}
 
 			for (int i = 0; i < 4; i++) {
 				int nx = x + dirX[i];
