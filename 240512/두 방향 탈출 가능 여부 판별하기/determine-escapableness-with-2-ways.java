@@ -7,10 +7,6 @@ public class Main {
 		return x >= 0 && x < xLen && y >= 0 && y < yLen;
 	}
 	private static void escapeMaze(int[][] maps, boolean[][] checked, int x, int y){
-		if(x == maps.length -1 && y == maps[0].length -1){
-			return;
-		}
-
 		for (int i = 0; i < 2; i++) {
 			int newX = x + nx[i];
 			int newY = y + ny[i];
