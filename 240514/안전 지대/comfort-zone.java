@@ -32,6 +32,7 @@ public class Main {
 		}
 
 		int[] ans = new int[2];
+        ans[0] = 1;
 		for (int i = 1; i < MAXLEN; i++) {
 			int areaCnt = 0;
 			for (int j = 0; j < n; j++) {
