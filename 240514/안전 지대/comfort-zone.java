@@ -38,6 +38,7 @@ public class Main {
 			for (int j = 0; j < n; j++) {
 				for (int k = 0; k < m; k++) {
 					if(!checked[j][k] && maps[j][k] > i) {
+                        checked[j][k] = true;
 						safeArea(maps, checked, j, k, i);
 						areaCnt++;
 					}
