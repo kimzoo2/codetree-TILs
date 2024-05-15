@@ -32,14 +32,14 @@ public class Main {
 			}
 		}
 		int cnt = 0;
-		int ans = 0;
+		int ans = 1;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if(!checked[i][j]) {
-					BLOCK_CNT = 1;
+					BLOCK_CNT = 0;
 					dfs(maps, checked, i, j, maps[i][j]);
 					checked[i][j] = true;
-					if(--BLOCK_CNT >= 4){
+					if(BLOCK_CNT >= 4){
 						cnt++;
 					}
 					ans = Math.max(ans, BLOCK_CNT);
