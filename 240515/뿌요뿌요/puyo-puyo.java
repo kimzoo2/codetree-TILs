@@ -36,10 +36,10 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if(!checked[i][j]) {
-					BLOCK_CNT = 0;
+					BLOCK_CNT = 1;
 					dfs(maps, checked, i, j, maps[i][j]);
 					checked[i][j] = true;
-					if(BLOCK_CNT >= 4){
+					if(--BLOCK_CNT >= 4){
 						cnt++;
 					}
 					ans = Math.max(ans, BLOCK_CNT);
