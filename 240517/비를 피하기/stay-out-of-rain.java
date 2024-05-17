@@ -9,7 +9,7 @@ public class Main {
 		return x >= 0 && x < xLen && y >= 0 && y < yLen;
 	}
 
-    private static void avoidTheRain_bfs(int[][] maps, int[][] ans, int x, int y, int len) {
+    private static int avoidTheRain_bfs(int[][] maps, int x, int y, int len) throws IOException {
 		boolean[][] checked = new boolean[len][len];
 		Queue<int[]> queue = new LinkedList<>();
 		queue.add(new int[] {x,y,0});
@@ -22,8 +22,7 @@ public class Main {
 			int distance = ints[2];
 
 			if(maps[qx][qy] == 3){
-				ans[x][y] = distance;
-				return;
+				return distance;
 			}
 
 			for (int i = 0; i < 4; i++) {
@@ -35,6 +34,7 @@ public class Main {
 				}
 			}
 		}
+		return -1;
 	}
 
     public static void main(String[] args) throws IOException {
@@ -57,8 +57,7 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if(maps[i][j] == 2) {
-					avoidTheRain_bfs(maps, ans, i, j, n);
-					if(ans[i][j] == 0) ans[i][j] = -1;
+					ans[i][j] = avoidTheRain_bfs(maps, i, j, n);
 				}
 			}
 		}
