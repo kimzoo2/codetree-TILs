@@ -46,21 +46,15 @@ public class Main {
 			crashWall_bfs(maps, n);
 			return;
 		}
-		int nx = x;
-		int ny = y;
-		while(nx != n || ny != n) {
-			if(ny == n){
-				nx++;
-				ny = 0;
-			}else{
-				ny++;
-			}
-			if (inRange(nx, ny, n, n) && maps[nx][ny] == 1 && !checked[nx][ny]) {
-				maps[nx][ny] = 0;
-				checked[nx][ny] = true;
-				crashWall_dfs(maps, checked, nx, ny, n, k - 1);
-				maps[nx][ny] = 1;
-				checked[nx][ny] = false;
+		for (int i = x; i < n; i++) {
+			for (int j = y; j < n; j++) {
+				if(maps[i][j] == 1 && !checked[i][j]){
+					maps[i][j] = 0;
+					checked[i][j] = true;
+					crashWall_dfs(maps, checked, x, y, n, k - 1);
+					maps[i][j] = 1;
+					checked[i][j] = false;
+				}
 			}
 		}
 	}
@@ -85,11 +79,7 @@ public class Main {
 		end_arr[0] = Integer.parseInt(end[0])-1;
 		end_arr[1] = Integer.parseInt(end[1])-1;
 		boolean[][] checked = new boolean[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				crashWall_dfs(maps, checked, i, j, n, k);
-			}
-		}
+		crashWall_dfs(maps, checked, start_arr[0], start_arr[1], n, k);
 
 		System.out.println(MIN_DISTANCE == Integer.MAX_VALUE ? -1 : MIN_DISTANCE);
     }
