@@ -42,17 +42,26 @@ public class Main {
 	}
 
     public static void crashWall_dfs(int[][] maps, boolean[][] checked, int x, int y, int n, int k){
-		if (k == 0)
+		if (k == 0){
 			crashWall_bfs(maps, n);
-		if (inRange(x, y, n, n) && maps[x][y] == 1 && !checked[x][y]) {
-			maps[x][y] = 0;
-			checked[x][y] = true;
-			if(x+1 == n)
-				crashWall_dfs(maps, checked, 0, y+1, n, k - 1);
-			else
-				crashWall_dfs(maps, checked, x+1, y, n, k - 1);
-			maps[x][y] = 1;
-			checked[x][y] = false;
+			return;
+		}
+		int nx = x;
+		int ny = y;
+		while(nx != n || ny != n) {
+			if(ny == n){
+				nx++;
+				ny = 0;
+			}else{
+				ny++;
+			}
+			if (inRange(nx, ny, n, n) && maps[nx][ny] == 1 && !checked[nx][ny]) {
+				maps[nx][ny] = 0;
+				checked[nx][ny] = true;
+				crashWall_dfs(maps, checked, nx, ny, n, k - 1);
+				maps[nx][ny] = 1;
+				checked[nx][ny] = false;
+			}
 		}
 	}
 
