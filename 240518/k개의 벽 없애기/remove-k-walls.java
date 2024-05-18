@@ -41,6 +41,42 @@ public class Main {
 		}
 	}
 
+	public static int crashWall_bfs2(int[][] maps, int n, int k, int[] start, int[] end) {
+        Queue<int[]> queue = new LinkedList<>();
+        boolean[][][] checked = new boolean[n][n][k + 1];
+        queue.add(new int[]{start[0], start[1], 0, 0}); // x, y, distance, broken
+        checked[start[0]][start[1]][0] = true;
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int x = current[0];
+            int y = current[1];
+            int distance = current[2];
+            int wallsBroken = current[3];
+
+            if (x == end[0] && y == end[1]) {
+                return distance;
+            }
+
+            for (int i = 0; i < 4; i++) {
+                int nx = x + dirX[i];
+                int ny = y + dirY[i];
+
+                if (inRange(nx, ny, n, n)) {
+                    if (maps[nx][ny] == 0 && !checked[nx][ny][wallsBroken]) {
+                        checked[nx][ny][wallsBroken] = true;
+                        queue.add(new int[]{nx, ny, distance + 1, wallsBroken});
+                    } else if (maps[nx][ny] == 1 && wallsBroken < k && !checked[nx][ny][wallsBroken + 1]) {
+                        checked[nx][ny][wallsBroken + 1] = true;
+                        queue.add(new int[]{nx, ny, distance + 1, wallsBroken + 1});
+                    }
+                }
+            }
+        }
+
+        return -1;
+    }
+
     public static void crashWall_dfs(int[][] maps, boolean[][] checked, int x, int y, int n, int k){
 		if (k == 0){
 			crashWall_bfs(maps, n);
@@ -79,8 +115,10 @@ public class Main {
 		end_arr[0] = Integer.parseInt(end[0])-1;
 		end_arr[1] = Integer.parseInt(end[1])-1;
 		boolean[][] checked = new boolean[n][n];
-		crashWall_dfs(maps, checked, start_arr[0], start_arr[1], n, k);
+		// crashWall_dfs(maps, checked, start_arr[0], start_arr[1], n, k);
 
-		System.out.println(MIN_DISTANCE == Integer.MAX_VALUE ? -1 : MIN_DISTANCE);
+		// System.out.println(MIN_DISTANCE == Integer.MAX_VALUE ? -1 : MIN_DISTANCE);
+		int result = crashWall_bfs2(maps, n, k, start_arr, end_arr);
+        System.out.println(result);
     }
 }
