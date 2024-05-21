@@ -14,15 +14,11 @@ public class Main {
 		for (int i = 1; i <= n; i++) {
 			queue.add(i);
 		}
-		int cnt = k;
-		while(!queue.isEmpty()){
-			int num = queue.poll();
-			if(--cnt > 0) {
-				queue.add(num);
-			}else {
-				cnt = k;
-				System.out.print(num + " ");
-			}
+		while(queue.size() != 1){
+			for(int i = 0; i < k - 1; i++)
+                queue.add(queue.poll());
+            System.out.print(queue.poll() + " ");
 		}
+        System.out.print(queue.peek());
     }
 }
