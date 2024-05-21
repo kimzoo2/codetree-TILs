@@ -11,8 +11,7 @@ public class Main {
 
 		while(deque.size() != 1){
 			deque.pollFirst();
-			int number = deque.pollFirst();
-			deque.addLast(number);
+			deque.addLast(deque.pollFirst());
 		}
 		System.out.println(deque.peekLast());
     }
