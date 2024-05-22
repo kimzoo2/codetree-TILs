@@ -26,7 +26,7 @@ public class Main {
 			int bfX = x + dirX[dir];
 			int bfY = y + dirY[dir];
 			// 최초 돌만 확인한다
-			if (!inRange(bfX, bfY, MAXLEN, MAXLEN) || maps[bfX][bfY] == maps[nx][ny])
+			if (inRange(bfX, bfY, MAXLEN, MAXLEN) && maps[bfX][bfY] == maps[nx][ny])
 				continue;
 
 			for (int j = 0; j < 6; j++) {
