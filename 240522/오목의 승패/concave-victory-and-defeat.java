@@ -4,60 +4,36 @@ public class Main {
 
     static int MAXLEN = 19;
 	static int[][] maps = new int[MAXLEN][MAXLEN];
-	static boolean[][] checked = new boolean[MAXLEN][MAXLEN];
-	static int[] dirX = {-1, -1, 0, 1, 1, 1, 0, -1};
-	static int[] dirY = {0, 1, 1, 1, 0, -1, -1, -1};
-	static int ANS = 0;
-	static int DIR = 0;
+	static int[][][] memo = new int[MAXLEN][MAXLEN][4];
+	static int[] dirX = {-1, 0, 1, 1};
+	static int[] dirY = {1, 1, 1, 0};
 
 	private static boolean inRange(int x, int y, int xLen, int yLen) {
 		return x >= 0 && y >= 0 && x < xLen && y < yLen;
 	}
 
-	private static boolean isSameStone(int x, int y) {
-		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < 8; i++) {
-			if(i == 7) continue;
-			int nx = x;
-			int ny = y;
-			stack.clear();
-			stack.push(maps[x][y]);
-			int dir = (i + 4) % 8;
-			int bfX = x + dirX[dir];
-			int bfY = y + dirY[dir];
-			// 최초 돌만 확인한다
-			if (inRange(bfX, bfY, MAXLEN, MAXLEN) && maps[bfX][bfY] == maps[nx][ny])
-				continue;
+	private static int calc(int x, int y, int dir, int color) {
+		int nx = x + dirX[dir];
+		int ny = y + dirY[dir];
 
-			for (int j = 0; j < 6; j++) {
-				nx += dirX[i];
-				ny += dirY[i];
-				int stone = stack.peek();
-				if (inRange(nx, ny, MAXLEN, MAXLEN) && stone == maps[nx][ny]) {
-					stack.push(maps[nx][ny]);
-				} else {
-					break;
-				}
-			}
-			if (stack.size() == 5) {
-				DIR = i;
-				return true;
-			}
+		if (inRange(nx, ny, MAXLEN, MAXLEN) && maps[nx][ny] == color) {
+			return memo[nx][ny][dir] = calc(nx, ny, dir, color) + 1;
 		}
-		return false;
+		return 1;
 	}
 
-    private static int[] findLocation() {
+    private static String findLocation() {
 		for (int i = 0; i < MAXLEN; i++) { // 가로
 			for (int j = 0; j < MAXLEN; j++) { // 세로
 				if (maps[i][j] != 0)
-					if (isSameStone(i, j)) {
-						ANS = maps[i][j];
-						return new int[] {i, j};
+					for (int d = 0; d < 4; d++) {
+						if (memo[i][j][d] == 0 && calc(i, j, d, maps[i][j]) == 5) {
+							return maps[i][j] + "\n" + (i + 1) + " " + (j + 1) + "\n";
+						}
 					}
 			}
 		}
-		return new int[] {};
+		return "0";
 	}
     public static void main(String[] args) throws IOException {
        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -68,18 +44,6 @@ public class Main {
 			}
 		}
 
-		int[] location = findLocation();
-		System.out.println(ANS);
-		if (ANS > 0) {
-			int x = location[0] + 1;
-			int y = location[1] + 1;
-			if (DIR > 4) {
-				for (int i = 0; i < 4; i++) {
-					x += dirX[DIR];
-					y += dirY[DIR];
-				}
-			}
-			System.out.println(x + " " + y);
-		}
+		System.out.println(findLocation());
     }
 }
