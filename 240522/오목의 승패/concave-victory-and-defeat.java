@@ -5,8 +5,8 @@ public class Main {
     static int MAXLEN = 19;
 	static int[][] maps = new int[MAXLEN][MAXLEN];
 	static boolean[][] checked = new boolean[MAXLEN][MAXLEN];
-	static int[] dirX = {-1, -1, 0, 1, 1, 1, -1};
-	static int[] dirY = {0, 1, 1, 1, 0, -1, -1};
+	static int[] dirX = {-1, -1, 0, 1, 1, 1, 0, -1};
+	static int[] dirY = {0, 1, 1, 1, 0, -1, -1, -1};
 	static int ANS = 0;
 	static int DIR = 0;
 
@@ -16,16 +16,17 @@ public class Main {
 
 	private static boolean isSameStone(int x, int y) {
 		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 8; i++) {
+			if(i == 7) continue;
 			int nx = x;
 			int ny = y;
 			stack.clear();
 			stack.push(maps[x][y]);
-			int dir = (i + 4) % 7;
-			int bfX = nx + dirX[dir];
-			int bfY = nx + dirY[dir];
+			int dir = (i + 4) % 8;
+			int bfX = x + dirX[dir];
+			int bfY = y + dirY[dir];
 			// 최초 돌만 확인한다
-			if (!inRange(bfX, bfY, MAXLEN, MAXLEN) || maps[bfY][bfY] == maps[nx][ny])
+			if (!inRange(bfX, bfY, MAXLEN, MAXLEN) || maps[bfX][bfY] == maps[nx][ny])
 				continue;
 
 			for (int j = 0; j < 6; j++) {
