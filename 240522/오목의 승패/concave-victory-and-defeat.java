@@ -70,14 +70,16 @@ public class Main {
 
 		int[] location = findLocation();
 		System.out.println(ANS);
-		int x = location[0] + 1;
-		int y = location[1] + 1;
-		if (ANS > 0 && DIR > 4) {
-			for (int i = 0; i < 4; i++) {
-				x += dirX[DIR];
-				y += dirY[DIR];
+		if (ANS > 0) {
+			int x = location[0] + 1;
+			int y = location[1] + 1;
+			if (DIR > 4) {
+				for (int i = 0; i < 4; i++) {
+					x += dirX[DIR];
+					y += dirY[DIR];
+				}
 			}
+			System.out.println(x + " " + y);
 		}
-		System.out.println(x + " " + y);
     }
 }
