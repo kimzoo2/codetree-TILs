@@ -25,10 +25,10 @@ public class Main {
     private static String findLocation() {
 		for (int i = 0; i < MAXLEN; i++) { // 가로
 			for (int j = 0; j < MAXLEN; j++) { // 세로
-				if (maps[i][j] != 0)
+				if (maps[j][i] != 0)
 					for (int d = 0; d < 4; d++) {
-						if (memo[i][j][d] == 0 && calc(i, j, d, maps[i][j]) == 5) {
-							return maps[i][j] + "\n" + (i + 1) + " " + (j + 1) + "\n";
+						if (memo[j][i][d] == 0 && calc(j, i, d, maps[j][i]) == 5) {
+							return maps[j][i] + "\n" + (j + 1) + " " + (i + 1) + "\n";
 						}
 					}
 			}
