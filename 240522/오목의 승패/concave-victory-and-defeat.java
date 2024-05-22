@@ -7,6 +7,7 @@ public class Main {
 	static int[][] maps = new int[MAXLEN + 1][MAXLEN + 1];
 	static int[] dirX = {-1, -1, 0, 1, 1, 1, 0, -1};
 	static int[] dirY = {0, 1, 1, 1, 0, -1, -1, -1};
+	static int ans = 0;
 
 	private static boolean inRange(int x, int y, int xLen, int yLen){
 		return x >= 0 && y >= 0 && x < xLen && y < yLen;
@@ -37,6 +38,7 @@ public class Main {
 			for (int j = 0; j < MAXLEN; j++) { // 세로
 				if(maps[j][i] != 0)
 					if(isSameStone(j, i)){
+						ans = maps[j][i];
 						return new int[] {j, i};
 					}
 			}
@@ -52,9 +54,7 @@ public class Main {
 				maps[i][j] = Integer.parseInt(stones[j]);
 			}
 		}
-
 		int[] location = findLocation();
-		int ans = maps[location[0]][location[1]];
 
 		System.out.println(ans);
 		if(ans > 0)
