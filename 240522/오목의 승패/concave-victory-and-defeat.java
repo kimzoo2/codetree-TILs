@@ -39,7 +39,7 @@ public class Main {
 				if(maps[j][i] != 0)
 					if(isSameStone(j, i)){
 						ans = maps[j][i];
-						return new int[] {j, i};
+						return new int[] {j + 1, i + 1};
 					}
 			}
 		}
@@ -58,6 +58,6 @@ public class Main {
 
 		System.out.println(ans);
 		if(ans > 0)
-			System.out.println((location[0] + 1) + " " + (location[1] + 1));
+			System.out.println(location[0] + " " + location[1]);
     }
 }
