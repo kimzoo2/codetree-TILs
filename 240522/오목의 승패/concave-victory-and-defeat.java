@@ -4,9 +4,11 @@ public class Main {
 
     static int MAXLEN = 19;
 	static int[][] maps = new int[MAXLEN][MAXLEN];
-	static int[] dirX = {-1, -1, 0, 1, 1};
-	static int[] dirY = {0, 1, 1, 1, 0};
+	static boolean[][] checked = new boolean[MAXLEN][MAXLEN];
+	static int[] dirX = {-1, -1, 0, 1, 1, 1, 0, -1};
+	static int[] dirY = {0, 1, 1, 1, 0, -1, -1, -1};
 	static int ANS = 0;
+	static int DIR = 0;
 
 	private static boolean inRange(int x, int y, int xLen, int yLen) {
 		return x >= 0 && y >= 0 && x < xLen && y < yLen;
@@ -14,21 +16,26 @@ public class Main {
 
 	private static boolean isSameStone(int x, int y) {
 		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 8; i++) {
 			int nx = x;
 			int ny = y;
 			stack.clear();
 			stack.push(maps[x][y]);
-			for (int j = 0; j < 4; j++) {
+			for (int j = 0; j < 6; j++) {
 				nx += dirX[i];
 				ny += dirY[i];
 				int stone = stack.peek();
-				if (inRange(nx, ny, MAXLEN, MAXLEN) && stone == maps[nx][ny]) {
+				if (inRange(nx, ny, MAXLEN, MAXLEN) && stone == maps[nx][ny] && !checked[nx][ny]) {
+					checked[nx][ny] = true;
 					stack.push(maps[nx][ny]);
+				} else {
+					break;
 				}
 			}
-			if (stack.size() == 5)
+			if (stack.size() == 5) {
+				DIR = i;
 				return true;
+			}
 		}
 		return false;
 	}
@@ -46,7 +53,7 @@ public class Main {
 		return new int[] {};
 	}
     public static void main(String[] args) throws IOException {
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for (int i = 0; i < MAXLEN; i++) {
 			String[] stones = br.readLine().split(" ");
 			for (int j = 0; j < MAXLEN; j++) {
@@ -56,7 +63,14 @@ public class Main {
 
 		int[] location = findLocation();
 		System.out.println(ANS);
-		if (ANS > 0)
-			System.out.println((location[0] + 1) + " " + (location[1] + 1));
+		int x = location[0] + 1;
+		int y = location[1] + 1;
+		if (ANS > 0 && DIR > 4) {
+			for (int i = 0; i < 4; i++) {
+				x += dirX[DIR];
+				y += dirY[DIR];
+			}
+		}
+		System.out.println(x + " " + y);
     }
 }
