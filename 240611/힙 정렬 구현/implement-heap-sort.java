@@ -10,13 +10,13 @@ public class Main {
 
 	public static void heapify(int[] arr, int n, int i){
 		int largest = i;
-		int l = 2 * i + 1;
-		int r = 2 * i + 2;
+		int l = 2 * i;
+		int r = 2 * i + 1;
 
-		if (l < n && arr[l] > arr[largest])
+		if (l <= n && arr[l] > arr[largest])
 			largest = l;
 
-		if (r < n && arr[r] > arr[largest])
+		if (r <= n && arr[r] > arr[largest])
 			largest = r;
 
 		if (largest != i) {
@@ -27,28 +27,28 @@ public class Main {
 
 	public static void heapSort(int[] arr, int n){
 		// max heap 만들기
-		for (int i = n / 2 - 1; i >= 0; i--) {
+		for (int i = n / 2; i > 0; i--) {
 			heapify(arr, n, i);
 		}
 
 		// 정렬한다
-		for (int i = n - 1; i > 0; i--) {
-			swap(arr, 0, i);
-			heapify(arr, i, 0);
+		for (int i = n; i > 1; i--) {
+			swap(arr, 1, i);
+			heapify(arr, i-1, 1);
 		}
 	}
     public static void main(String[] args)  throws IOException {
        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		String[] split = br.readLine().split(" ");
-		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i] = Integer.parseInt(split[i]);
+		int[] arr = new int[n+1];
+		for (int i = 1; i <= n; i++) {
+			arr[i] = Integer.parseInt(split[i-1]);
 		}
 
 		heapSort(arr, n);
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 1; i <= n; i++) {
 			System.out.print(arr[i] + " ");
 		}
     }
