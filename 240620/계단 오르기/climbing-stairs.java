@@ -8,11 +8,10 @@ public class Main {
 		dp[0] = 1;
 		dp[2] = 1;
 		dp[3] = 1;
+		dp[4] = 1;
 
 		for (int i = 5; i <= n; i++) {
-			if(i % 5 == 0){
-				dp[i] = dp[i - 5] + 1;
-			}
+			dp[i] = Math.max(dp[i - 3], dp[i - 2]) + 1;
 		}
 
 		System.out.println(dp[n]);
