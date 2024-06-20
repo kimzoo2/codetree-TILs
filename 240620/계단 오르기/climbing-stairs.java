@@ -11,7 +11,7 @@ public class Main {
 		dp[4] = 1;
 
 		for (int i = 5; i <= n; i++) {
-			dp[i] = Math.max(dp[i - 3], dp[i - 2]) + 1;
+			dp[i] = (dp[i - 3] + dp[i - 2]) % 10_007;
 		}
 
 		System.out.println(dp[n]);
