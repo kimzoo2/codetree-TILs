@@ -10,7 +10,7 @@ public class Main {
 		dp[2] = 2;
 
 		for (int i = 3; i <= n; i++) {
-			dp[i] = (dp[i - 2] + dp[i - 1]) % 10_0007;
+			dp[i] = (dp[i - 2] + dp[i - 1]) % 10_007;
 		}
 
 		System.out.println(dp[n]);
