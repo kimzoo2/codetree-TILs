@@ -17,11 +17,11 @@ public class Main {
 			}
 		}
 
-		int max = 0;
+		int max = 1;
 
 		for (int i = 1; i < n; i++) {
 			if(memo[i] == 0){
-				max = 0;
+				max = 1;
 				break;
 			}
 			max = Math.max(memo[i], max);
