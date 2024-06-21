@@ -19,6 +19,10 @@ public class Main {
 			memo[i] += 1;
 		}
 
-        System.out.println(memo[n - 1]);
+        int max = 0;
+		for (int i = 0; i < n; i++) {
+			max = Math.max(max, memo[i]);
+		}
+		System.out.println(max);
     }
 }
