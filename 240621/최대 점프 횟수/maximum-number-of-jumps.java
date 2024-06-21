@@ -20,10 +20,8 @@ public class Main {
 		int max = 1;
 
 		for (int i = 1; i < n; i++) {
-			if(memo[i] == 0){
-				max = 1;
+			if(memo[i] == 0)
 				break;
-			}
 			max = Math.max(memo[i], max);
 		}
 
