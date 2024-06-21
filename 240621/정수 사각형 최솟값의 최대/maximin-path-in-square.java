@@ -27,7 +27,7 @@ public class Main {
 
 		for (int i = 1; i < n; i++) {
 			for (int j = 1; j < n; j++) {
-				 dp[i][j] = Math.min(Math.max(dp[i-1][j], dp[i][j-1]), num[i][j]);
+				 dp[i][j] = Math.min(Math.max(dp[i-1][j], dp[i][j-1]), arr[i][j]);
 			}
 		}
 
