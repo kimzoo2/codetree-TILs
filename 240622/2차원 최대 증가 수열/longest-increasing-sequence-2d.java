@@ -42,7 +42,7 @@ public class Main {
 	private static void canJump(int[][] maps, int[][] memo, int x, int y){
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
-				if(maps[i][j] < maps[x][y]){
+				if(maps[i][j] < maps[x][y] && memo[i][j] > 0){
 					memo[x][y] = Math.max(memo[x][y], memo[i][j] + 1);
 				}
 			}
