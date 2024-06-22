@@ -22,7 +22,7 @@ public class Main {
 				maps[i][j] = Integer.parseInt(inputs[j]);
 			}
 		}
-		memo[0][0] = maps[0][0];
+		memo[0][0] = 1;
 		for (int i = 1; i < n; i++) {
 			for (int j = 1; j < m; j++) {
 				canJump(maps, memo, i, j);
