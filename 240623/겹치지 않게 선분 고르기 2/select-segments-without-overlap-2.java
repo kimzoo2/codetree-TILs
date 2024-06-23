@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,6 +16,8 @@ public class Main {
 			arr[i][0] = Integer.parseInt(inputs[0]);
 			arr[i][1] = Integer.parseInt(inputs[1]);
 		}
+
+        Arrays.sort(arr, Comparator.comparingInt(a -> a[1]));
 
 		for (int i = 0; i < n; i++) {
 			int max = 1;
