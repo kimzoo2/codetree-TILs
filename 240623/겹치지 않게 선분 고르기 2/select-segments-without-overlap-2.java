@@ -17,26 +17,21 @@ public class Main {
 			arr[i][1] = Integer.parseInt(inputs[1]);
 		}
 
-        Arrays.sort(arr, Comparator.comparingInt(a -> a[1]));
+		Arrays.sort(arr, Comparator.comparingInt(a -> a[1]));
 
+		int max = 1;
 		for (int i = 0; i < n; i++) {
-			int max = 1;
+			int cnt = 1;
 			fillLine(arr[i][0], arr[i][1], line);
 			for (int j = 0; j < n; j++) {
 				if(i == j) continue;
 				if(fillLine(arr[j][0], arr[j][1], line)){
-					max++;
+					cnt++;
 				}
 			}
-			memo[i] = Math.max(memo[i], max);
+			max = Math.max(max, cnt);
 			// 선분 배열 초기화
 			Arrays.fill(line, 0);
-		}
-
-		int max = 0;
-
-		for (int i = 0; i < n; i++) {
-			max = Math.max(max, memo[i]);
 		}
 
 		System.out.println(max);
