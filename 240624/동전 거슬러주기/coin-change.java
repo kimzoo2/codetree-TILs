@@ -18,7 +18,7 @@ public class Main {
 
 		// 초기화
 		for (int i = 1; i <= m; i++) {
-			memo[i] = 10_000;
+			memo[i] = 10_001;
 		}
 		for (int i = 0; i < n; i++) { // 동전 타입
 			for (int j = arr[i]; j <= m; j++) { // 동전 금액
@@ -29,6 +29,6 @@ public class Main {
 			}
 		}
 
-		System.out.println(memo[m]);
+		System.out.println(memo[m]== 10_0001 ? -1 : memo[m]);
     }
 }
