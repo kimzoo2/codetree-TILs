@@ -29,6 +29,6 @@ public class Main {
 			}
 		}
 
-		System.out.println(memo[m]== 10_0001 ? -1 : memo[m]);
+		System.out.println(memo[m]== 10_001 ? -1 : memo[m]);
     }
 }
