@@ -19,6 +19,12 @@ public class Main {
 			memo[i] = Math.max(arr[i -1], memo[i - 1] + arr[i - 1]);
 		}
 
-		System.out.println(memo[n]);
+		int max = Integer.MIN_VALUE;
+
+		for (int i = 0; i <= n; i++) {
+			max = Math.max(max, memo[i]);
+		}
+
+		System.out.println(max);
 	}
 }
