@@ -21,22 +21,13 @@ public class Main {
 		int[][] dp = new int[n + 1][m + 1];
 		// i = 일자, j = 옷 번호
 		for (int i = 2; i <= m; i++) {
-			// 어제 제일 화려할 때를 찾는다.
-			for (int j = 1; j <= n; j++) {
-				for (int k = 1; k <= n; k++) {
-					if(j == k || dp[k][i - 1] == 0) continue;
-					dp[j][i] = Math.max(dp[j][i], dp[k][i - 1]);
+			// 어제 화려함에 오늘 화려함을 더해서 가장 화려함이 큰 값을 누적한다.
+			for (int j = 1; j <= n; j++) { // 현재 옷
+				for (int k = 1; k <= n; k++) { // 어제 옷
+					if(maps[k][i - 1] > 0 && maps[j][i] > 0) {
+						dp[j][i] = Math.max(dp[j][i], dp[k][i - 1] + Math.abs(maps[j][i] - maps[k][i - 1]));
+					}
 				}
-			}
-
-			// |어제 - 오늘| 중 제일 큰 값을 dp에 누적한다.
-			for (int j = 1; j <= n; j++) {
-				int maxValue = 0;
-				for (int k = 1; k <= n; k++) {
-					if(maps[k][i - 1] > 0 && maps[j][i] > 0)
-						maxValue = Math.max(maxValue, Math.abs(maps[j][i] - maps[k][i-1]));
-				}
-				dp[j][i] += maxValue;
 			}
 		}
 
