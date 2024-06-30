@@ -23,7 +23,8 @@ public class Main {
 				if(a.charAt(i - 1) == b.charAt(j - 1)){
 					dp[i][j] = dp[i-1][j-1];
 				}else{
-					dp[i][j] = Math.min(dp[i-1][j-1], dp[i][j-1]) + 1;
+					dp[i][j] = Math.min(dp[i-1][j-1], dp[i][j-1]);
+                    dp[i][j] = Math.min(dp[i-1][j], dp[i][j]) + 1;
 				}
 			}
 		}
