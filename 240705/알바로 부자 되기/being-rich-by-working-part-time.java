@@ -19,8 +19,8 @@ public class Main {
 		dp[0] = arr[0][2];
 
 		for (int i = 1; i < n; i++) {
+			dp[i] = arr[i][2];
 			for (int j = i -1; j >= 0; j--) {
-				dp[i] = arr[i][2];
 				// 기간이 겹치지 않을 때
 				if(arr[i][0] > arr[j][1]){
 					dp[i] = Math.max(dp[i], arr[i][2] + dp[j]);
