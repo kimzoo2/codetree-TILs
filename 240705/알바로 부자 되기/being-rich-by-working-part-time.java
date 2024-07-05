@@ -14,28 +14,26 @@ public class Main {
 		}
 
 		Arrays.sort(arr, ((o1, o2) -> o1[1] - o2[1]));
-		int[][] dp = new int[n][2];
-		dp[0][0] = arr[0][1];
-		dp[0][1] = arr[0][2];
+		int[] dp = new int[n];
+		// int[] dp = new int[arr[n-1][1] + 1];
+		dp[0] = arr[0][2];
 
 		for (int i = 1; i < n; i++) {
-			dp[i][0] = arr[i][1];
 			for (int j = i -1; j >= 0; j--) {
 				// 기간이 겹치면서 큰 만족도를 주는 알바 여부
-				if(arr[i][0] <= dp[j][0]) {
-					dp[i][1] = Math.max(dp[i][1], Math.max(arr[i][2], dp[j][1]));
+				if(arr[i][0] <= arr[j][1]) {
+					dp[i] = Math.max(dp[i], Math.max(arr[i][2], dp[j]));
 				}
 
 				// 기간이 겹치지 않을 때
-				if(arr[i][0] > dp[j][0]){
+				if(arr[i][0] > dp[j]){
 					// 기간이 겹치지 않을 때와 겹칠 때를 비교하여 pay가 더 큰 경우를 누적한다.
-					dp[i][1] = Math.max(dp[i][1], arr[i][2] + dp[j][1]);
+					dp[i] = Math.max(dp[i], arr[i][2] + dp[j]);
 					break;
 				}
 			}
-
 		}
 
-		System.out.println(dp[n-1][1]);
+		System.out.println(dp[n-1]);
     }
 }
