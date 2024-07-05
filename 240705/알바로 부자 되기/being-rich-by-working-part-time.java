@@ -26,7 +26,7 @@ public class Main {
 				}
 
 				// 기간이 겹치지 않을 때
-				if(arr[i][0] > dp[j]){
+				if(arr[i][0] > arr[j][1]){
 					// 기간이 겹치지 않을 때와 겹칠 때를 비교하여 pay가 더 큰 경우를 누적한다.
 					dp[i] = Math.max(dp[i], arr[i][2] + dp[j]);
 					break;
