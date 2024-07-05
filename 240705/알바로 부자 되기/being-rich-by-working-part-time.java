@@ -23,7 +23,7 @@ public class Main {
 			for (int j = i -1; j >= 0; j--) {
 				// 기간이 겹치면서 큰 만족도를 주는 알바 여부
 				if(arr[i][0] <= dp[j][0]) {
-					dp[i][1] = Math.max(arr[i][2], dp[j][1]);
+					dp[i][1] = Math.max(dp[i][1], Math.max(arr[i][2], dp[j][1]));
 				}
 
 				// 기간이 겹치지 않을 때
