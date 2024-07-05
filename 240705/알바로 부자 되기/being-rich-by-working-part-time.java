@@ -20,20 +20,17 @@ public class Main {
 
 		for (int i = 1; i < n; i++) {
 			for (int j = i -1; j >= 0; j--) {
-				// 기간이 겹치면서 큰 만족도를 주는 알바 여부
-				if(arr[i][0] <= arr[j][1]) {
-					dp[i] = Math.max(dp[i], Math.max(arr[i][2], dp[j]));
-				}
-
+				dp[i] = arr[i][2];
 				// 기간이 겹치지 않을 때
 				if(arr[i][0] > arr[j][1]){
-					// 기간이 겹치지 않을 때와 겹칠 때를 비교하여 pay가 더 큰 경우를 누적한다.
 					dp[i] = Math.max(dp[i], arr[i][2] + dp[j]);
-					break;
 				}
 			}
 		}
-
-		System.out.println(dp[n-1]);
+		int max = 0;
+		for (int i = 0; i < n; i++) {
+			max = Math.max(max, dp[i]);
+		}
+		System.out.println(max);
     }
 }
