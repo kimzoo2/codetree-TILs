@@ -16,6 +16,10 @@ public class Main {
 
 		for (int i = 0; i < n; i++) {
 			tokens[i] = Integer.parseInt(tokenInputs[i]);
+            if(tokens[i] > m){
+				System.out.println(-1);
+				return;
+			}
 			dp[tokens[i]] = 1;
 		}
 
