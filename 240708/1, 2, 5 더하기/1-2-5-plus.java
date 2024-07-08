@@ -13,11 +13,13 @@ public class Main {
 		}
 
 		for (int i = 3; i <= n; i++) {
-			dp[i] = dp[i - 1] + dp[i - 2];
+            int num = 0;
+			num = dp[i - 1] + dp[i - 2] ;
 
 			if(i >= 5){
-				dp[i] += dp[i - 5];
+				num += dp[i - 5];
 			}
+            dp[i] = num % 10_007;
 		}
 
 		System.out.println(dp[n]);
