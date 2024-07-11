@@ -16,11 +16,8 @@ public class Main {
 		}
 
 		for (int i = 1; i <= K; i++) {
- 			if(arr[len] == 0){
-				arr[len] = i;
-				recursive(i, arr, len + 1);
-				arr[len] = 0;
-			}
+			arr[len] = i;
+			recursive(i, arr, len + 1);
 		}
 	}
     public static void main(String[] args) throws IOException {
@@ -37,7 +34,6 @@ public class Main {
 		for (int i = 1; i <= K; i++) {
 			arr[0] = i;
 			recursive(i, arr, 1);
-			arr[0] = 0;
 		}
 	}
 }
