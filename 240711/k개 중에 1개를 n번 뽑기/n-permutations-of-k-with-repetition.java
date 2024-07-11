@@ -1,8 +1,7 @@
 import java.io.*;
 
 public class Main {
-    static int K = 0;
-	static int N = 0;
+    static int K, N;
 	private static void print(int[] arr){
 		for (int i = 0; i < N; i++) {
 			System.out.print(arr[i] + " ");
