@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 public class Main {
 
     static int n;
@@ -32,7 +33,7 @@ public class Main {
 		}
 	}
 
-	private static void dfs(int cnt, int[][] checked, int[][] maps){
+	private static void dfs(int cnt, int[][] checked, List<int[]> inputList){
 		if(CNT == cnt){
 			int ans = 0;
 			for (int i = 0; i < n; i++) {
@@ -44,46 +45,36 @@ public class Main {
 			return;
 		}
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if(maps[i][j] == 1){
-					for (int k = 0; k < 3; k++) {
-						maps[i][j] = 0;
-						explode(i, j, k, checked);
-						dfs(cnt + 1, checked, maps);
-						reset(i, j, k, checked);
-						maps[i][j] = 1;
-					}
-				}
-			}
+		int x = inputList.get(cnt)[0];
+		int y = inputList.get(cnt)[1];
+		for (int k = 0; k < 3; k++) {
+			explode(x, y, k, checked);
+			dfs(cnt+1, checked, inputList);
+			reset(x, y, k, checked);
 		}
 	}
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		n = Integer.parseInt(br.readLine());
-		int[][] maps = new int[n][n];
+		List<int[]> inputList = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			String[] inputs = br.readLine().split(" ");
 			for (int j = 0; j < n; j++) {
-				maps[i][j] = Integer.parseInt(inputs[j]);
-				if(maps[i][j] == 1) CNT++;
+				if(Integer.parseInt(inputs[j]) == 1) {
+					CNT++;
+					inputList.add(new int[]{i, j});
+				}
 			}
 		}
 
 		int[][] checked = new int[n][n];
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if(maps[i][j] == 1){
-					for (int k = 0; k < 3; k++) {
-						maps[i][j] = 0;
-						explode(i, j, k, checked);
-						dfs(1, checked, maps);
-						checked = new int[n][n];
-					}
-					break;
-				}
-			}
+		int x = inputList.get(0)[0];
+		int y = inputList.get(0)[1];
+		for (int k = 0; k < 3; k++) {
+			explode(x, y, k, checked);
+			dfs(1, checked, inputList);
+			checked = new int[n][n];
 		}
 
 		System.out.println(ANS);
