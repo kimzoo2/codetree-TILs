@@ -6,12 +6,11 @@ public class Main {
 
 	public static boolean isBeautiful(int[] arr) {
 		// 연달아 같은 숫자가 나오는 시작 위치를 잡습니다.
-		int len = arr.length;
 		int num = arr[0];
-		for (int i = 0; i < len; i += num) {
+		for (int i = 0; i < n; i += num) {
 			num = arr[i];
 
-			if(i + num > len) return false;
+			if(i + num > n) return false;
 			for (int j = i; j < i + num; j++) {
 				if(num != arr[j]){
 					return false;
