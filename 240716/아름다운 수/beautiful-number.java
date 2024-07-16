@@ -31,7 +31,6 @@ public class Main {
 		for(int i = 1; i <= 4; i++) {
 			arr[cnt] = i;
 			countBeautifulSeq(cnt + 1, arr);
-			arr[cnt] = 0;
 		}
 	}
     public static void main(String[] args) throws IOException {
