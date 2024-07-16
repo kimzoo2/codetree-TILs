@@ -5,6 +5,7 @@ public class Main {
     static int n;
     static int CNT;
 	static int ANS;
+	static List<int[]> inputList = new ArrayList<>();
 
     static int[][][] bombPoint = {{{-2, 0},{-1, 0}, {0,0}, {1, 0}, {2, 0}},
 							{{-1, 0}, {0, 1}, {0, 0}, {1, 0}, {0, -1}},
@@ -33,7 +34,7 @@ public class Main {
 		}
 	}
 
-	private static void dfs(int cnt, int[][] checked, List<int[]> inputList){
+	private static void dfs(int cnt, int[][] checked){
 		if(CNT == cnt){
 			int ans = 0;
 			for (int i = 0; i < n; i++) {
@@ -49,14 +50,14 @@ public class Main {
 		int y = inputList.get(cnt)[1];
 		for (int k = 0; k < 3; k++) {
 			explode(x, y, k, checked);
-			dfs(cnt+1, checked, inputList);
+			dfs(cnt+1, checked);
 			reset(x, y, k, checked);
 		}
 	}
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		n = Integer.parseInt(br.readLine());
-		List<int[]> inputList = new ArrayList<>();
+		
 		for (int i = 0; i < n; i++) {
 			String[] inputs = br.readLine().split(" ");
 			for (int j = 0; j < n; j++) {
@@ -73,7 +74,7 @@ public class Main {
 		int y = inputList.get(0)[1];
 		for (int k = 0; k < 3; k++) {
 			explode(x, y, k, checked);
-			dfs(1, checked, inputList);
+			dfs(1, checked);
 			checked = new int[n][n];
 		}
 
