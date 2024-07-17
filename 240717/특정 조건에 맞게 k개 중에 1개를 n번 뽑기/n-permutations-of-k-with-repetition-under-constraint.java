@@ -4,16 +4,16 @@ public class Main {
 
     private static int n,k;
 
-	private static boolean isDuplicated(int cnt, int[] arr){
-        if(cnt < 2) return false;
-		for (int i = cnt; i >= 0 && i > cnt - 3; i--) {
-			if(arr[i] != arr[cnt]) return false;
+	private static boolean isDuplicated(int cnt, int n, int[] arr){
+		if(cnt < 1) return false;
+		for (int i = cnt; i >= 0 && i > cnt - 2; i--) {
+			if(arr[i] != n) return false;
 		}
 		return true;
 	}
 	private static void bfs(int cnt, int[] arr) {
 		if(k == cnt){
-			if(isDuplicated(cnt-1, arr)) return;
+			if(isDuplicated(cnt-2, arr[cnt-1], arr)) return;
 			for (int i : arr) {
 				System.out.print(i + " ");
 			}
@@ -22,7 +22,7 @@ public class Main {
 		}
 
 		for (int i = 1; i <= n; i++) {
-			if(isDuplicated(cnt, arr)) continue;
+			if(isDuplicated(cnt-1, i, arr)) continue;
 			arr[cnt] = i;
 			bfs(cnt+1, arr);
 			arr[cnt] = 0;
