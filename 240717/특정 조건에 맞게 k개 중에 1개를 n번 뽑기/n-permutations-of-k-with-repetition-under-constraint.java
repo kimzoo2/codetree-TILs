@@ -13,7 +13,6 @@ public class Main {
 	}
 	private static void bfs(int cnt, int[] arr) {
 		if(k == cnt){
-			if(isDuplicated(cnt-2, arr[cnt-1], arr)) return;
 			for (int i : arr) {
 				System.out.print(i + " ");
 			}
@@ -35,9 +34,7 @@ public class Main {
 		n = Integer.parseInt(inputs[0]); // 숫자
 		k = Integer.parseInt(inputs[1]); // 자릿수
 		int[] arr = new int[k];
-		for (int i = 1; i <= n; i++) {
-			arr[0] = i;
-			bfs(1, arr);
-		}
+		bfs(0, arr);
+
 	}
 }
