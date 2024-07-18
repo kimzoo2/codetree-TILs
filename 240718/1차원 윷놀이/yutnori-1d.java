@@ -6,12 +6,12 @@ public class Main {
 
 	private static void bfs(int order, Person[] people){
 		// 만약 order가 n과 동일해지면 people의 position이 m이 넘는 경우와 ANS 중 큰 값을 넣는다.
-		if(order == n){
-			int cnt = 0;
-			for (int i = 0; i < k; i++) {
+		int cnt = 0;
+		for (int i = 0; i < k; i++) {
 				if(people[i].getPosition() >= m) cnt++;
 			}
-			ANS = Math.max(ANS, cnt);
+		ANS = Math.max(ANS, cnt);
+		if(order == n){
 			return;
 		}
 
@@ -19,9 +19,11 @@ public class Main {
 		// 모든 user가 해당 order를 수행한다.
 			// people의 position을 order만큼 변경한다.
 		for (int i = 0; i < k; i++) {
-            people[i].plusPosition(movePosition);
-            bfs(order + 1, people);
-            people[i].resetPosition(movePosition);
+			if(people[i].canGo(m)){
+				people[i].plusPosition(movePosition);
+				bfs(order + 1, people);
+				people[i].resetPosition(movePosition);
+			}
 		}
 	}
 
@@ -69,6 +71,10 @@ class Person {
 
 	public void resetPosition(int minusPosition) {
 		this.position -= minusPosition;
+	}
+
+	public boolean canGo(int maximum){
+		return this.position < maximum;
 	}
 
 }
