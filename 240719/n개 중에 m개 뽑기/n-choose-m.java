@@ -10,7 +10,7 @@ public class Main {
 		System.out.println();
 	}
 
-	private static void bfs(int cnt, int curNum, int[] arr){
+	private static void choose(int cnt, int curNum, int[] arr){
 		if (cnt == m || curNum == N + 1) {
 			if (cnt == m)
 				print(arr);
