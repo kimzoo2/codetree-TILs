@@ -22,7 +22,7 @@ public class Main {
 		choose(cnt + 1, curNum + 1, arr);
 		arr[cnt] = 0;
 
-		bfs(cnt, curNum + 1, arr);
+		choose(cnt, curNum + 1, arr);
 	}
 
     public static void main(String[] args) throws IOException {
