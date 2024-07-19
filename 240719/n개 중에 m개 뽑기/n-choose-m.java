@@ -19,7 +19,7 @@ public class Main {
 		}
 
 		arr[cnt] = curNum;
-		bfs(cnt + 1, curNum + 1, arr);
+		choose(cnt + 1, curNum + 1, arr);
 		arr[cnt] = 0;
 
 		bfs(cnt, curNum + 1, arr);
@@ -31,6 +31,6 @@ public class Main {
 		N = Integer.parseInt(inputs[0]);
 		m = Integer.parseInt(inputs[1]);
 		int[] arr = new int[m];
-		bfs(0, 1, arr);
+		choose(0, 1, arr);
 	}
 }
