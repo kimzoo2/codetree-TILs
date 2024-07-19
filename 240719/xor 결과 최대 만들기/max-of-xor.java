@@ -6,7 +6,6 @@ public class Main {
 	private static void choose(int[] nums, int cnt, int idx) {
 		// cnt가 m일 때 재귀함수를 종료한다.
 			// combinationArr에 들어있는 값들의 xor 값과 max 중 큰 값을 넣는다.
-		if(idx >= n) return;
 		if(cnt == m){
 			int ans = 0;
 			for (int i = 0; i < m; i++) {
@@ -15,6 +14,7 @@ public class Main {
 			max = Math.max(max, ans);
 			return;
 		}
+		if(idx >= n) return;
 
 		combinationArr[cnt] = nums[idx];
 		choose(nums, cnt + 1, idx + 1);
