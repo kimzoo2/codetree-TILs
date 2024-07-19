@@ -10,24 +10,19 @@ public class Main {
 		System.out.println();
 	}
 
-    private static boolean isDuplicated(int num, int[] arr){
-		for (int i = 0; i < m; i++) {
-			if(num == arr[i]) return true;
-		}
-		return false;
-	}
+	private static void bfs(int cnt, int curNum, int[] arr){
+		if (cnt == m || curNum == N + 1) {
+			if (cnt == m)
+				print(arr);
 
-	private static void bfs(int cnt, int num, int[] arr){
-		if(cnt == m){
-			print(arr);
 			return;
 		}
 
-		for (int i = num; i <= N; i++) {
-			arr[cnt] = i;
-			bfs(cnt + 1, i + 1, arr);
-			arr[cnt] = 0;
-		}
+		arr[cnt] = curNum;
+		bfs(cnt + 1, curNum + 1, arr);
+		arr[cnt] = 0;
+
+		bfs(cnt, curNum + 1, arr);
 	}
 
     public static void main(String[] args) throws IOException {
