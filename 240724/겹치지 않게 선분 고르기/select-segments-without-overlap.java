@@ -6,8 +6,8 @@ public class Main {
 	private static int ans;
 
     private static void chooseLine(int[][] lines, int idx, int cnt){
+        ans = Math.max(ans, cnt);
 		if(n == idx + 1){
-			ans = Math.max(ans, cnt);
 			return;
 		}
 
