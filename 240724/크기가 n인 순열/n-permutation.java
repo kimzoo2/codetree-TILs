@@ -17,13 +17,12 @@ public class Main {
 			return;
 		}
 		for (int i = 1; i <= n; i++) {
-			if(!visited[i]) {
-				visited[i] = true;
-				list.add(cnt, i);
-				choose(cnt + 1, visited);
-				visited[i] = false;
-				list.remove(cnt);
-			}
+			if(visited[i]) continue;
+            visited[i] = true;
+            list.add(cnt, i);
+            choose(cnt + 1, visited);
+            visited[i] = false;
+            list.remove(cnt);
 		}
 	}
     public static void main(String[] args) throws IOException {
