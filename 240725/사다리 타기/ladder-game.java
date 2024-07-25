@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
 
     private static int n,m,ans;
+    private static int maxM = 15;
 	private static int[] ansArr;
 
     private static int[] dirY = {1, -1};
@@ -29,7 +30,7 @@ public class Main {
 					}
 				}
 				x++;
-				if (x == m) {
+				if (x == maxM) {
 					ans[y] = i;
 					break;
 				}
@@ -78,7 +79,7 @@ public class Main {
 		n = Integer.parseInt(inputs[0]);
 		m = Integer.parseInt(inputs[1]);
 		ans = m;
-		int[][] ladder = new int[m][n];
+		int[][] ladder = new int[maxM][n];
 
 		for (int i = 1; i <= m; i++) {
 			String[] ab = br.readLine().split(" ");
@@ -89,7 +90,7 @@ public class Main {
 		}
 		ansArr = ghostLeg(ladder);
 
-		ladder = new int[m][n];
+		ladder = new int[maxM][n];
 		drawLine(ladder, 0, 0, 0);
 
 		System.out.println(ans);
