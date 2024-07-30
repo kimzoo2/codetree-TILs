@@ -6,32 +6,16 @@ public class Main {
 	private static int ans = Integer.MIN_VALUE;
 	private static String str;
 
+	private static int convert(int[] alphabetLocations, char ch){
+		return alphabetLocations[ch - 'a'];
+	}
+
 	private static int calculate(int[] alphabetLocations){
 		// String 연산을 실제로 연산한다.
 		char[] chars = str.toCharArray();
-
-		char ch = chars[0];
-		for (int i = 0; i < alphabetLocations.length; i++) {
-			// 같은 알파벳이면 같은 숫자로 치환한다.
-			for (int j = 0; j < chars.length ; j++) {
-				if(Character.isAlphabetic(chars[j]) && ch == chars[j]){
-					chars[j] = (char)(alphabetLocations[i] + '0');
-				}
-			}
-
-			// 치환할 다음 알파벳을 찾는다.
-			for (int j = 0; j < chars.length ; j++) {
-				if(Character.isAlphabetic(chars[j])){
-					ch = chars[j];
-					break;
-				}
-			}
-		}
-		// String 연산을 실제로 연산한다.
-		int ans = chars[0] - '0';
-
+		int ans = convert(alphabetLocations, chars[0]);
 		for (int i = 1; i < chars.length - 1; i += 2) {
-			int num = chars[i + 1] - '0';
+			int num = convert(alphabetLocations, chars[i + 1]);
 			switch (chars[i]) {
 				case '+':
 					ans += num; break;
@@ -39,7 +23,6 @@ public class Main {
 					ans -= num; break;
 				case '*':
 					ans *= num; break;
-				default: ans %= num; break;
 			}
 		}
 
@@ -62,15 +45,8 @@ public class Main {
     public static void main(String[] args)  throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		str = br.readLine();
-		char[] charArray = str.toCharArray();
-		// 알파벳과 기호를 분해한다
-		Set<Character> set = new HashSet<>();
-		for (int i = 0; i < str.length(); i++) {
-			if (Character.isAlphabetic(charArray[i])) {
-				set.add(charArray[i]);
-			}
-		}
-		int[] alphabetLocationArr = new int[set.size()];
+
+		int[] alphabetLocationArr = new int[6];
 		// 알파벳을 숫자로 변환하고 계산한다.
 		for (int i = 1; i <= 4; i++) {
 			choose(0, i, alphabetLocationArr);
@@ -78,6 +54,5 @@ public class Main {
 
 		// max 값을 출력한다.
 		System.out.println(ans);
-
 	}
 }
