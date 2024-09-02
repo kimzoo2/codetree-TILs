@@ -11,7 +11,7 @@ public class Main {
 			minJumpCnt = Math.min(minJumpCnt, jumpCnt);
 			return;
 		}
-		for (int i = 1; i <= jumpCountArr[cnt]; i++) {
+		for (int i = 1; i <= jumpCountArr[cnt] && cnt + i < n; i++) {
 			getMinJumpCount(jumpCountArr, cnt + i, jumpCnt + 1);
 		}
 	}
