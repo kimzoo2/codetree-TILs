@@ -4,12 +4,6 @@ public class Main {
 
     private static int n, max;
     public static List<Location> chooseLocations = new ArrayList<>();
-    private static boolean canAdd(int x, int y){
-		for (Location location : chooseLocations) {
-			if(location.getX() == x || location.getY() == y) return false;
-		}
-		return true;
-	}
 
 	private static int getMax(int[][] map){
 		int min = Integer.MAX_VALUE;
@@ -19,7 +13,7 @@ public class Main {
 		return min;
 	}
 
-	private static void getMax(int[][] map, int cnt, int y) {
+	private static void getMax(int[][] map, boolean[] visited, int y) {
 		if (chooseLocations.size() == n) {
 			// min 값과 비교하여 max 값을 구한다.
 			max = Math.max(max, getMax(map));
@@ -33,11 +27,12 @@ public class Main {
 		// 현재 위치를 선택한다.
 		// 같은 행, 열을 확인한다.
 		for (int i = 0; i < n; i++) {
-			if(canAdd(i, y)) {
-				chooseLocations.add(new Location(i, y));
-				getMax(map, cnt + 1, y + 1);
-				chooseLocations.remove(cnt);
-			}
+			if (visited[i]) continue;
+			visited[i] = true;
+			chooseLocations.add(new Location(i, y));
+			getMax(map, visited, y + 1);
+			visited[i] = false;
+			chooseLocations.remove(chooseLocations.size() - 1);
 		}
 
 	}
@@ -53,7 +48,9 @@ public class Main {
 			}
 		}
 
-		getMax(map, 0, 0);
+		boolean[] visited = new boolean[n];
+
+		getMax(map, visited, 0);
 
 		System.out.println(max);
 	}
